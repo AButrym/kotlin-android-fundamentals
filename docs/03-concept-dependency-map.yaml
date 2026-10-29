@@ -1,0 +1,2658 @@
+schema_version: "0.1"
+artifact:
+  id: "concept-dependency-map"
+  title: "Kotlin for Android Fundamentals Concept Dependency Map"
+  status: "draft"
+  version: "0.1.0"
+  last_reviewed: "2026-10-29"
+  depends_on:
+    - "01-course-contract.md"
+    - "02-course-map.yaml"
+
+semantics:
+  purpose: >-
+    Defines the instructional prerequisites and introduction order for concepts
+    used in the course. This is a pedagogical dependency graph, not a complete
+    formal model of Kotlin or Android APIs.
+
+  relation_types:
+    requires: >-
+      Concepts that should already be understood before this concept is taught
+      as a new core concept.
+    reinforces: >-
+      Earlier concepts that should be revisited while teaching this concept.
+    enables: >-
+      Later concepts or capabilities made easier by this concept.
+    related: >-
+      Concepts that should be contrasted or connected but are not strict
+      prerequisites.
+
+  usage_rules:
+    - "A core lesson may assume only concepts introduced in earlier lessons."
+    - "A concept introduced in the current lesson may be used after explanation and guided practice."
+    - "A future concept may appear only as named scaffolding."
+    - "Scaffolded code must be visually and verbally distinguished from code the learner is expected to understand."
+    - "Optional concepts must not become hidden prerequisites for core exercises."
+    - "When a concept has multiple prerequisites, generators must verify all core prerequisites."
+    - "A concept marked recognition_only may be read but need not be independently produced."
+
+levels:
+  - id: "recognize"
+    description: "Recognize the term or construct in provided code"
+
+  - id: "explain"
+    description: "Explain the concept in plain language and trace an example"
+
+  - id: "apply-guided"
+    description: "Use the concept with prompts or partial scaffolding"
+
+  - id: "apply-independent"
+    description: "Use the concept independently in a familiar problem"
+
+  - id: "integrate"
+    description: "Combine the concept with other concepts in a larger solution"
+
+domains:
+  programming:
+    title: "Programming foundations"
+  kotlin:
+    title: "Kotlin language"
+  compose:
+    title: "Jetpack Compose"
+  android:
+    title: "Android tooling and platform"
+  architecture:
+    title: "Application architecture"
+  tooling:
+    title: "Development workflow"
+  quality:
+    title: "Quality and explanation"
+
+concepts:
+  - id: "program-source-output"
+    domain: "programming"
+    title: "Program, source code, and output"
+    introduced_in: "L01"
+    target_level: "explain"
+    requires: []
+    reinforces: []
+    enables:
+      - "expression"
+      - "function-call"
+      - "build-run-cycle"
+    avoid_before: []
+    teaching_note: >-
+      Begin with observable input and output. Do not start with compiler theory.
+
+  - id: "expression"
+    domain: "programming"
+    title: "Expression"
+    introduced_in: "L01"
+    target_level: "apply-independent"
+    requires:
+      - "program-source-output"
+    reinforces: []
+    enables:
+      - "comparison"
+      - "boolean-expression"
+      - "if-expression"
+      - "return-value"
+    avoid_before: []
+    teaching_note: >-
+      Treat an expression as code that produces a value.
+
+  - id: "value"
+    domain: "programming"
+    title: "Value"
+    introduced_in: "L01"
+    target_level: "apply-independent"
+    requires:
+      - "expression"
+    reinforces: []
+    enables:
+      - "val"
+      - "basic-type"
+      - "function-parameter"
+      - "return-value"
+    avoid_before: []
+
+  - id: "variable"
+    domain: "programming"
+    title: "Variable as named storage"
+    introduced_in: "L01"
+    target_level: "apply-independent"
+    requires:
+      - "value"
+    reinforces: []
+    enables:
+      - "var"
+      - "assignment"
+      - "state-intro"
+    related:
+      - "val"
+      - "var"
+    avoid_before: []
+
+  - id: "assignment"
+    domain: "programming"
+    title: "Assignment and state change"
+    introduced_in: "L01"
+    target_level: "apply-independent"
+    requires:
+      - "variable"
+    reinforces:
+      - "value"
+    enables:
+      - "iteration"
+      - "state-write"
+    avoid_before: []
+
+  - id: "basic-type"
+    domain: "programming"
+    title: "Basic data type"
+    introduced_in: "L01"
+    target_level: "explain"
+    requires:
+      - "value"
+    reinforces: []
+    enables:
+      - "int-type"
+      - "double-type"
+      - "boolean-type"
+      - "string-type"
+      - "nullable-type"
+    avoid_before: []
+
+  - id: "function-call"
+    domain: "programming"
+    title: "Function call"
+    introduced_in: "L01"
+    target_level: "apply-independent"
+    requires:
+      - "program-source-output"
+    reinforces:
+      - "expression"
+    enables:
+      - "function-declaration"
+      - "composable-function-intro"
+    avoid_before: []
+
+  - id: "main-function"
+    domain: "kotlin"
+    title: "Kotlin main function"
+    introduced_in: "L01"
+    target_level: "recognize"
+    requires:
+      - "program-source-output"
+      - "function-call"
+    reinforces: []
+    enables:
+      - "build-run-cycle"
+    avoid_before: []
+
+  - id: "val"
+    domain: "kotlin"
+    title: "Read-only local reference with val"
+    introduced_in: "L01"
+    target_level: "apply-independent"
+    requires:
+      - "value"
+      - "variable"
+    reinforces:
+      - "basic-type"
+    enables:
+      - "immutable-component-input"
+      - "immutable-list-update"
+    related:
+      - "var"
+    avoid_before: []
+
+  - id: "var"
+    domain: "kotlin"
+    title: "Mutable local variable with var"
+    introduced_in: "L01"
+    target_level: "apply-independent"
+    requires:
+      - "variable"
+      - "assignment"
+    reinforces:
+      - "value"
+    enables:
+      - "while-loop"
+      - "state-intro"
+    related:
+      - "val"
+    avoid_before: []
+
+  - id: "int-type"
+    domain: "kotlin"
+    title: "Int"
+    introduced_in: "L01"
+    target_level: "apply-independent"
+    requires:
+      - "basic-type"
+    reinforces:
+      - "expression"
+    enables:
+      - "comparison"
+      - "index"
+      - "collection-size"
+    avoid_before: []
+
+  - id: "double-type"
+    domain: "kotlin"
+    title: "Double"
+    introduced_in: "L01"
+    target_level: "apply-guided"
+    requires:
+      - "basic-type"
+    reinforces:
+      - "expression"
+    enables: []
+    avoid_before: []
+
+  - id: "boolean-type"
+    domain: "kotlin"
+    title: "Boolean"
+    introduced_in: "L01"
+    target_level: "apply-independent"
+    requires:
+      - "basic-type"
+    reinforces:
+      - "value"
+    enables:
+      - "boolean-expression"
+      - "branching"
+      - "loop-condition"
+    avoid_before: []
+
+  - id: "string-type"
+    domain: "kotlin"
+    title: "String"
+    introduced_in: "L01"
+    target_level: "apply-independent"
+    requires:
+      - "basic-type"
+    reinforces:
+      - "value"
+    enables:
+      - "string-template"
+      - "text-composable"
+    avoid_before: []
+
+  - id: "type-inference"
+    domain: "kotlin"
+    title: "Type inference"
+    introduced_in: "L01"
+    target_level: "explain"
+    requires:
+      - "basic-type"
+      - "val"
+    reinforces:
+      - "expression"
+    enables:
+      - "readable-kotlin"
+    avoid_before: []
+
+  - id: "string-template"
+    domain: "kotlin"
+    title: "String templates"
+    introduced_in: "L01"
+    target_level: "apply-independent"
+    requires:
+      - "string-type"
+      - "value"
+    reinforces:
+      - "expression"
+    enables:
+      - "text-composable"
+    avoid_before: []
+
+  - id: "println"
+    domain: "kotlin"
+    title: "Console output with println"
+    introduced_in: "L01"
+    target_level: "apply-independent"
+    requires:
+      - "function-call"
+      - "string-type"
+    reinforces:
+      - "program-source-output"
+    enables:
+      - "manual-debug-output"
+    avoid_before: []
+
+  - id: "android-studio-project"
+    domain: "android"
+    title: "Android Studio project"
+    introduced_in: "L01"
+    target_level: "apply-guided"
+    requires:
+      - "program-source-output"
+    reinforces: []
+    enables:
+      - "basic-project-structure"
+      - "build-run-cycle"
+      - "composable-function-intro"
+    avoid_before: []
+
+  - id: "basic-project-structure"
+    domain: "android"
+    title: "Essential Android project structure"
+    introduced_in: "L01"
+    target_level: "recognize"
+    requires:
+      - "android-studio-project"
+    reinforces: []
+    enables:
+      - "package-by-feature-intro"
+    avoid_before:
+      - "gradle-internals"
+
+  - id: "build-run-cycle"
+    domain: "tooling"
+    title: "Edit, build, run, observe"
+    introduced_in: "L01"
+    target_level: "apply-independent"
+    requires:
+      - "android-studio-project"
+    reinforces:
+      - "program-source-output"
+    enables:
+      - "systematic-debugging"
+    avoid_before: []
+
+  - id: "emulator-or-device"
+    domain: "android"
+    title: "Run target: emulator or device"
+    introduced_in: "L01"
+    target_level: "apply-guided"
+    requires:
+      - "build-run-cycle"
+    reinforces: []
+    enables: []
+    avoid_before: []
+
+  - id: "composable-function-intro"
+    domain: "compose"
+    title: "Composable function"
+    introduced_in: "L01"
+    target_level: "recognize"
+    requires:
+      - "function-call"
+      - "android-studio-project"
+    reinforces:
+      - "program-source-output"
+    enables:
+      - "text-composable"
+      - "button-composable"
+      - "parameterized-composable"
+    avoid_before:
+      - "compose-runtime-internals"
+
+  - id: "text-composable"
+    domain: "compose"
+    title: "Text composable"
+    introduced_in: "L01"
+    target_level: "apply-independent"
+    requires:
+      - "composable-function-intro"
+      - "string-type"
+    reinforces:
+      - "function-call"
+    enables:
+      - "conditional-composition"
+    avoid_before: []
+
+  - id: "button-composable"
+    domain: "compose"
+    title: "Button composable"
+    introduced_in: "L01"
+    target_level: "apply-guided"
+    requires:
+      - "composable-function-intro"
+      - "text-composable"
+    reinforces:
+      - "function-call"
+    enables:
+      - "onclick-callback-intro"
+    avoid_before: []
+
+  - id: "onclick-callback-intro"
+    domain: "compose"
+    title: "Button click callback"
+    introduced_in: "L01"
+    target_level: "recognize"
+    requires:
+      - "button-composable"
+    reinforces:
+      - "function-call"
+    enables:
+      - "callback-parameter-intro"
+      - "event-handler-lambda"
+      - "event"
+    avoid_before:
+      - "higher-order-function-formalization"
+
+  - id: "recomposition-observation"
+    domain: "compose"
+    title: "Observe UI changing after state changes"
+    introduced_in: "L01"
+    target_level: "recognize"
+    requires:
+      - "composable-function-intro"
+      - "onclick-callback-intro"
+    reinforces:
+      - "variable"
+    enables:
+      - "recomposition-basic-model"
+    avoid_before:
+      - "compose-runtime-internals"
+
+  - id: "comparison"
+    domain: "programming"
+    title: "Comparison"
+    introduced_in: "L02"
+    target_level: "apply-independent"
+    requires:
+      - "expression"
+      - "basic-type"
+    reinforces:
+      - "boolean-type"
+    enables:
+      - "boolean-expression"
+      - "branching"
+      - "rule-validation"
+    avoid_before: []
+
+  - id: "boolean-expression"
+    domain: "programming"
+    title: "Boolean expression"
+    introduced_in: "L02"
+    target_level: "apply-independent"
+    requires:
+      - "comparison"
+      - "boolean-type"
+    reinforces:
+      - "expression"
+    enables:
+      - "branching"
+      - "while-loop"
+      - "predicate"
+    avoid_before: []
+
+  - id: "branching"
+    domain: "programming"
+    title: "Conditional branching"
+    introduced_in: "L02"
+    target_level: "apply-independent"
+    requires:
+      - "boolean-expression"
+    reinforces:
+      - "program-source-output"
+    enables:
+      - "if-statement"
+      - "when-expression-intro"
+      - "conditional-composition"
+      - "rule-validation"
+    avoid_before: []
+
+  - id: "comparison-operators"
+    domain: "kotlin"
+    title: "Comparison operators"
+    introduced_in: "L02"
+    target_level: "apply-independent"
+    requires:
+      - "comparison"
+    reinforces:
+      - "int-type"
+    enables:
+      - "boolean-expression"
+    avoid_before: []
+
+  - id: "logical-operators"
+    domain: "kotlin"
+    title: "Logical operators"
+    introduced_in: "L02"
+    target_level: "apply-independent"
+    requires:
+      - "boolean-expression"
+    reinforces:
+      - "boolean-type"
+    enables:
+      - "complex-rule-condition"
+    avoid_before: []
+
+  - id: "if-statement"
+    domain: "kotlin"
+    title: "if for conditional execution"
+    introduced_in: "L02"
+    target_level: "apply-independent"
+    requires:
+      - "branching"
+    reinforces:
+      - "boolean-expression"
+    enables:
+      - "if-expression"
+      - "conditional-composition"
+    avoid_before: []
+
+  - id: "if-expression"
+    domain: "kotlin"
+    title: "if as an expression"
+    introduced_in: "L02"
+    target_level: "apply-independent"
+    requires:
+      - "if-statement"
+      - "expression"
+    reinforces:
+      - "value"
+    enables:
+      - "expression-body"
+    avoid_before: []
+
+  - id: "when-expression-intro"
+    domain: "kotlin"
+    title: "Basic when expression"
+    introduced_in: "L02"
+    target_level: "apply-independent"
+    requires:
+      - "branching"
+      - "expression"
+    reinforces:
+      - "if-expression"
+    enables:
+      - "enum-class"
+      - "exhaustive-when"
+    avoid_before: []
+
+  - id: "range-intro"
+    domain: "kotlin"
+    title: "Integer ranges"
+    introduced_in: "L02"
+    target_level: "apply-independent"
+    requires:
+      - "int-type"
+      - "comparison"
+    reinforces:
+      - "expression"
+    enables:
+      - "for-loop"
+      - "range-iteration"
+    avoid_before: []
+
+  - id: "column-layout"
+    domain: "compose"
+    title: "Column layout"
+    introduced_in: "L02"
+    target_level: "apply-independent"
+    requires:
+      - "composable-function-intro"
+    reinforces:
+      - "function-call"
+    enables:
+      - "nested-layout"
+      - "screen-component-boundary"
+    avoid_before: []
+
+  - id: "row-layout"
+    domain: "compose"
+    title: "Row layout"
+    introduced_in: "L02"
+    target_level: "apply-independent"
+    requires:
+      - "composable-function-intro"
+    reinforces:
+      - "function-call"
+    enables:
+      - "nested-layout"
+      - "static-board-prototype"
+    avoid_before: []
+
+  - id: "modifier-intro"
+    domain: "compose"
+    title: "Basic Modifier usage"
+    introduced_in: "L02"
+    target_level: "apply-guided"
+    requires:
+      - "composable-function-intro"
+    reinforces:
+      - "function-call"
+    enables:
+      - "reusable-component"
+      - "material-theme"
+    avoid_before:
+      - "modifier-internals"
+
+  - id: "conditional-composition"
+    domain: "compose"
+    title: "Conditional UI composition"
+    introduced_in: "L02"
+    target_level: "apply-independent"
+    requires:
+      - "branching"
+      - "composable-function-intro"
+    reinforces:
+      - "if-statement"
+      - "when-expression-intro"
+    enables:
+      - "screen-flow"
+      - "exhaustive-state-rendering"
+    avoid_before: []
+
+  - id: "algorithm"
+    domain: "programming"
+    title: "Algorithm"
+    introduced_in: "L03"
+    target_level: "explain"
+    requires:
+      - "program-source-output"
+      - "branching"
+    reinforces:
+      - "manual-tracing"
+    enables:
+      - "iteration"
+      - "rule-validation"
+    avoid_before: []
+
+  - id: "iteration"
+    domain: "programming"
+    title: "Iteration"
+    introduced_in: "L03"
+    target_level: "apply-independent"
+    requires:
+      - "algorithm"
+      - "assignment"
+      - "boolean-expression"
+    reinforces:
+      - "branching"
+    enables:
+      - "while-loop"
+      - "for-loop"
+      - "nested-iteration"
+      - "collection-iteration"
+    avoid_before: []
+
+  - id: "nested-iteration"
+    domain: "programming"
+    title: "Nested iteration"
+    introduced_in: "L03"
+    target_level: "apply-guided"
+    requires:
+      - "iteration"
+    reinforces:
+      - "row-column-coordinate"
+    enables:
+      - "static-board-prototype"
+    avoid_before: []
+
+  - id: "row-column-coordinate"
+    domain: "programming"
+    title: "Row and column coordinates"
+    introduced_in: "L03"
+    target_level: "apply-independent"
+    requires:
+      - "int-type"
+      - "nested-iteration"
+    reinforces:
+      - "range-intro"
+    enables:
+      - "cell-domain-model"
+      - "board-as-data"
+    avoid_before: []
+
+  - id: "manual-tracing"
+    domain: "programming"
+    title: "Manual code tracing"
+    introduced_in: "L03"
+    target_level: "apply-independent"
+    requires:
+      - "program-source-output"
+      - "variable"
+    reinforces:
+      - "assignment"
+      - "branching"
+    enables:
+      - "systematic-debugging"
+      - "state-transition"
+    avoid_before: []
+
+  - id: "while-loop"
+    domain: "kotlin"
+    title: "while loop"
+    introduced_in: "L03"
+    target_level: "apply-independent"
+    requires:
+      - "iteration"
+      - "var"
+      - "boolean-expression"
+    reinforces:
+      - "assignment"
+    enables:
+      - "algorithm"
+    avoid_before: []
+
+  - id: "for-loop"
+    domain: "kotlin"
+    title: "for loop"
+    introduced_in: "L03"
+    target_level: "apply-independent"
+    requires:
+      - "iteration"
+      - "range-intro"
+    reinforces:
+      - "variable"
+    enables:
+      - "collection-iteration"
+      - "nested-iteration"
+    avoid_before: []
+
+  - id: "range-iteration"
+    domain: "kotlin"
+    title: "Iterating over a range"
+    introduced_in: "L03"
+    target_level: "apply-independent"
+    requires:
+      - "for-loop"
+      - "range-intro"
+    reinforces:
+      - "int-type"
+    enables:
+      - "repeated-composition"
+    avoid_before: []
+
+  - id: "repeat-function"
+    domain: "kotlin"
+    title: "repeat function"
+    introduced_in: "L03"
+    target_level: "apply-guided"
+    requires:
+      - "iteration"
+      - "function-call"
+    reinforces:
+      - "range-iteration"
+    enables:
+      - "repeated-composition"
+    avoid_before: []
+
+  - id: "repeated-composition"
+    domain: "compose"
+    title: "Generate repeated composables"
+    introduced_in: "L03"
+    target_level: "apply-independent"
+    requires:
+      - "iteration"
+      - "composable-function-intro"
+    reinforces:
+      - "row-layout"
+      - "column-layout"
+    enables:
+      - "static-board-prototype"
+      - "collection-driven-ui"
+    avoid_before: []
+
+  - id: "nested-layout"
+    domain: "compose"
+    title: "Nested Row and Column layouts"
+    introduced_in: "L03"
+    target_level: "apply-guided"
+    requires:
+      - "row-layout"
+      - "column-layout"
+    reinforces:
+      - "repeated-composition"
+    enables:
+      - "static-board-prototype"
+    avoid_before: []
+
+  - id: "debugger-intro"
+    domain: "tooling"
+    title: "Debugger and breakpoints"
+    introduced_in: "L03"
+    target_level: "apply-guided"
+    requires:
+      - "build-run-cycle"
+      - "manual-tracing"
+    reinforces:
+      - "program-source-output"
+    enables:
+      - "systematic-debugging"
+    avoid_before: []
+
+  - id: "decomposition"
+    domain: "programming"
+    title: "Problem decomposition"
+    introduced_in: "L04"
+    target_level: "apply-independent"
+    requires:
+      - "algorithm"
+      - "function-call"
+    reinforces:
+      - "manual-tracing"
+    enables:
+      - "function-declaration"
+      - "reusable-component"
+      - "separation-of-concerns-intro"
+    avoid_before: []
+
+  - id: "input-process-output"
+    domain: "programming"
+    title: "Input, processing, and output"
+    introduced_in: "L04"
+    target_level: "explain"
+    requires:
+      - "program-source-output"
+      - "function-call"
+    reinforces:
+      - "expression"
+    enables:
+      - "function-parameter"
+      - "return-value"
+    avoid_before: []
+
+  - id: "local-scope"
+    domain: "programming"
+    title: "Local scope"
+    introduced_in: "L04"
+    target_level: "apply-independent"
+    requires:
+      - "variable"
+      - "function-call"
+    reinforces:
+      - "decomposition"
+    enables:
+      - "encapsulation-intro"
+    avoid_before: []
+
+  - id: "function-declaration"
+    domain: "kotlin"
+    title: "Function declaration"
+    introduced_in: "L04"
+    target_level: "apply-independent"
+    requires:
+      - "function-call"
+      - "decomposition"
+    reinforces:
+      - "program-source-output"
+    enables:
+      - "function-parameter"
+      - "return-value"
+      - "pure-rule-function"
+      - "extension-function"
+    avoid_before: []
+
+  - id: "function-parameter"
+    domain: "kotlin"
+    title: "Function parameter"
+    introduced_in: "L04"
+    target_level: "apply-independent"
+    requires:
+      - "function-declaration"
+      - "input-process-output"
+      - "basic-type"
+    reinforces:
+      - "value"
+    enables:
+      - "parameterized-composable"
+      - "function-type"
+    avoid_before: []
+
+  - id: "return-value"
+    domain: "kotlin"
+    title: "Function return value"
+    introduced_in: "L04"
+    target_level: "apply-independent"
+    requires:
+      - "function-declaration"
+      - "input-process-output"
+      - "expression"
+    reinforces:
+      - "basic-type"
+    enables:
+      - "pure-rule-function"
+      - "collection-transformations"
+    avoid_before: []
+
+  - id: "unit-return"
+    domain: "kotlin"
+    title: "Unit return"
+    introduced_in: "L04"
+    target_level: "explain"
+    requires:
+      - "return-value"
+    reinforces:
+      - "function-call"
+    enables:
+      - "event-handler-method"
+    avoid_before: []
+
+  - id: "expression-body"
+    domain: "kotlin"
+    title: "Expression-body function"
+    introduced_in: "L04"
+    target_level: "apply-guided"
+    requires:
+      - "function-declaration"
+      - "return-value"
+      - "expression"
+    reinforces:
+      - "if-expression"
+    enables:
+      - "idiomatic-kotlin-review"
+    avoid_before: []
+
+  - id: "parameterized-composable"
+    domain: "compose"
+    title: "Composable with parameters"
+    introduced_in: "L04"
+    target_level: "apply-independent"
+    requires:
+      - "composable-function-intro"
+      - "function-parameter"
+    reinforces:
+      - "decomposition"
+    enables:
+      - "reusable-component"
+      - "immutable-component-input"
+    avoid_before: []
+
+  - id: "callback-parameter-intro"
+    domain: "compose"
+    title: "Callback parameter"
+    introduced_in: "L04"
+    target_level: "apply-guided"
+    requires:
+      - "parameterized-composable"
+      - "onclick-callback-intro"
+    reinforces:
+      - "function-parameter"
+    enables:
+      - "function-type"
+      - "event-handler-lambda"
+      - "state-down-events-up"
+    avoid_before:
+      - "higher-order-function-detail"
+
+  - id: "reusable-component"
+    domain: "compose"
+    title: "Reusable UI component"
+    introduced_in: "L04"
+    target_level: "apply-independent"
+    requires:
+      - "decomposition"
+      - "parameterized-composable"
+    reinforces:
+      - "modifier-intro"
+    enables:
+      - "component-model-boundary"
+      - "stateless-composable"
+      - "screen-component-boundary"
+    avoid_before: []
+
+  - id: "domain-model"
+    domain: "architecture"
+    title: "Domain model"
+    introduced_in: "L05"
+    target_level: "apply-independent"
+    requires:
+      - "structured-data"
+      - "decomposition"
+    reinforces:
+      - "input-process-output"
+    enables:
+      - "cell-domain-model"
+      - "board-as-data"
+      - "game-engine-intro"
+    avoid_before:
+      - "clean-architecture-layers"
+
+  - id: "structured-data"
+    domain: "programming"
+    title: "Structured data"
+    introduced_in: "L05"
+    target_level: "apply-independent"
+    requires:
+      - "basic-type"
+      - "function-parameter"
+    reinforces:
+      - "value"
+    enables:
+      - "class-declaration"
+      - "data-class"
+    avoid_before: []
+
+  - id: "class-declaration"
+    domain: "kotlin"
+    title: "Class declaration"
+    introduced_in: "L05"
+    target_level: "apply-independent"
+    requires:
+      - "structured-data"
+      - "function-declaration"
+    reinforces:
+      - "local-scope"
+    enables:
+      - "instance"
+      - "primary-constructor"
+      - "property"
+      - "data-class"
+    avoid_before:
+      - "inheritance-hierarchy"
+
+  - id: "instance"
+    domain: "kotlin"
+    title: "Class instance"
+    introduced_in: "L05"
+    target_level: "apply-independent"
+    requires:
+      - "class-declaration"
+      - "value"
+    reinforces:
+      - "function-call"
+    enables:
+      - "domain-object-as-ui-input"
+    avoid_before: []
+
+  - id: "primary-constructor"
+    domain: "kotlin"
+    title: "Primary constructor"
+    introduced_in: "L05"
+    target_level: "apply-independent"
+    requires:
+      - "class-declaration"
+      - "function-parameter"
+    reinforces:
+      - "instance"
+    enables:
+      - "property"
+      - "data-class"
+    avoid_before: []
+
+  - id: "property"
+    domain: "kotlin"
+    title: "Object property"
+    introduced_in: "L05"
+    target_level: "apply-independent"
+    requires:
+      - "instance"
+      - "primary-constructor"
+    reinforces:
+      - "val"
+      - "var"
+    enables:
+      - "data-class"
+      - "domain-object-as-ui-input"
+    avoid_before: []
+
+  - id: "data-class"
+    domain: "kotlin"
+    title: "Data class"
+    introduced_in: "L05"
+    target_level: "apply-independent"
+    requires:
+      - "class-declaration"
+      - "primary-constructor"
+      - "property"
+    reinforces:
+      - "structured-data"
+    enables:
+      - "copy-intro"
+      - "ui-state-model"
+      - "cell-domain-model"
+    avoid_before: []
+
+  - id: "copy-intro"
+    domain: "kotlin"
+    title: "Data-class copy"
+    introduced_in: "L05"
+    target_level: "apply-guided"
+    requires:
+      - "data-class"
+    reinforces:
+      - "val"
+    enables:
+      - "immutable-list-update"
+      - "ui-state-model"
+      - "private-mutable-public-readonly-state"
+    avoid_before: []
+
+  - id: "domain-object-as-ui-input"
+    domain: "compose"
+    title: "Domain object as composable input"
+    introduced_in: "L05"
+    target_level: "apply-independent"
+    requires:
+      - "data-class"
+      - "parameterized-composable"
+    reinforces:
+      - "reusable-component"
+    enables:
+      - "component-model-boundary"
+      - "collection-driven-ui"
+    avoid_before: []
+
+  - id: "component-model-boundary"
+    domain: "architecture"
+    title: "Boundary between model and UI component"
+    introduced_in: "L05"
+    target_level: "explain"
+    requires:
+      - "domain-object-as-ui-input"
+      - "reusable-component"
+    reinforces:
+      - "decomposition"
+    enables:
+      - "screen-component-boundary"
+      - "ui-logic-separation"
+    avoid_before: []
+
+  - id: "collection"
+    domain: "programming"
+    title: "Collection"
+    introduced_in: "L06"
+    target_level: "apply-independent"
+    requires:
+      - "structured-data"
+      - "iteration"
+    reinforces:
+      - "value"
+    enables:
+      - "list"
+      - "collection-iteration"
+      - "board-as-data"
+    avoid_before: []
+
+  - id: "index"
+    domain: "programming"
+    title: "Collection index"
+    introduced_in: "L06"
+    target_level: "apply-independent"
+    requires:
+      - "collection"
+      - "int-type"
+    reinforces:
+      - "range-intro"
+    enables:
+      - "get-by-index"
+      - "map-indexed-intro"
+    avoid_before: []
+
+  - id: "collection-size"
+    domain: "programming"
+    title: "Collection size and valid index range"
+    introduced_in: "L06"
+    target_level: "apply-independent"
+    requires:
+      - "collection"
+      - "index"
+    reinforces:
+      - "comparison"
+    enables:
+      - "out-of-bounds"
+    avoid_before: []
+
+  - id: "out-of-bounds"
+    domain: "programming"
+    title: "Invalid collection index"
+    introduced_in: "L06"
+    target_level: "explain"
+    requires:
+      - "index"
+      - "collection-size"
+    reinforces:
+      - "range-intro"
+    enables:
+      - "edge-case-analysis"
+    avoid_before: []
+
+  - id: "list"
+    domain: "kotlin"
+    title: "List"
+    introduced_in: "L06"
+    target_level: "apply-independent"
+    requires:
+      - "collection"
+      - "basic-type"
+    reinforces:
+      - "structured-data"
+    enables:
+      - "list-of"
+      - "collection-iteration"
+      - "board-as-data"
+      - "collection-transformations"
+    avoid_before:
+      - "generic-declaration"
+
+  - id: "list-of"
+    domain: "kotlin"
+    title: "Creating a list with listOf"
+    introduced_in: "L06"
+    target_level: "apply-independent"
+    requires:
+      - "list"
+      - "function-call"
+    reinforces:
+      - "value"
+    enables:
+      - "board-as-data"
+    avoid_before: []
+
+  - id: "mutable-list"
+    domain: "kotlin"
+    title: "MutableList at a practical level"
+    introduced_in: "L06"
+    target_level: "apply-guided"
+    requires:
+      - "list"
+      - "assignment"
+    reinforces:
+      - "var"
+    enables:
+      - "mutability-contrast"
+    avoid_before:
+      - "collection-implementation-detail"
+
+  - id: "board-as-data"
+    domain: "architecture"
+    title: "Board represented as data"
+    introduced_in: "L06"
+    target_level: "apply-independent"
+    requires:
+      - "list"
+      - "data-class"
+      - "row-column-coordinate"
+      - "domain-model"
+    reinforces:
+      - "collection"
+    enables:
+      - "collection-driven-ui"
+      - "immutable-list-update"
+      - "game-engine-intro"
+    avoid_before: []
+
+  - id: "collection-driven-ui"
+    domain: "compose"
+    title: "UI generated from a collection"
+    introduced_in: "L06"
+    target_level: "apply-independent"
+    requires:
+      - "list"
+      - "repeated-composition"
+      - "domain-object-as-ui-input"
+    reinforces:
+      - "reusable-component"
+    enables:
+      - "lazy-grid-intro"
+      - "immutable-component-input"
+    avoid_before: []
+
+  - id: "lazy-grid-intro"
+    domain: "compose"
+    title: "Lazy grid at an introductory level"
+    introduced_in: "L06"
+    target_level: "apply-guided"
+    requires:
+      - "collection-driven-ui"
+      - "reusable-component"
+    reinforces:
+      - "modifier-intro"
+    enables:
+      - "game-board-component"
+    avoid_before:
+      - "lazy-layout-performance"
+
+  - id: "absence-of-value"
+    domain: "programming"
+    title: "Absence of a value"
+    introduced_in: "L07"
+    target_level: "explain"
+    requires:
+      - "value"
+      - "basic-type"
+    reinforces:
+      - "domain-model"
+    enables:
+      - "nullable-type"
+      - "null-value"
+    avoid_before: []
+
+  - id: "nullable-type"
+    domain: "kotlin"
+    title: "Nullable type"
+    introduced_in: "L07"
+    target_level: "apply-independent"
+    requires:
+      - "absence-of-value"
+      - "basic-type"
+    reinforces:
+      - "branching"
+    enables:
+      - "safe-call"
+      - "elvis-operator"
+      - "smart-cast-intro"
+      - "empty-cell-model"
+    avoid_before: []
+
+  - id: "null-value"
+    domain: "kotlin"
+    title: "null value"
+    introduced_in: "L07"
+    target_level: "apply-independent"
+    requires:
+      - "nullable-type"
+    reinforces:
+      - "absence-of-value"
+    enables:
+      - "null-check"
+    avoid_before: []
+
+  - id: "safe-call"
+    domain: "kotlin"
+    title: "Safe-call operator"
+    introduced_in: "L07"
+    target_level: "apply-independent"
+    requires:
+      - "nullable-type"
+      - "property"
+    reinforces:
+      - "expression"
+    enables:
+      - "safe-null-rendering"
+    avoid_before: []
+
+  - id: "elvis-operator"
+    domain: "kotlin"
+    title: "Elvis operator"
+    introduced_in: "L07"
+    target_level: "apply-independent"
+    requires:
+      - "nullable-type"
+      - "expression"
+    reinforces:
+      - "if-expression"
+    enables:
+      - "fallback-rendering"
+    avoid_before: []
+
+  - id: "smart-cast-intro"
+    domain: "kotlin"
+    title: "Basic smart cast after a check"
+    introduced_in: "L07"
+    target_level: "apply-guided"
+    requires:
+      - "nullable-type"
+      - "null-check"
+      - "branching"
+    reinforces:
+      - "type-inference"
+    enables:
+      - "data-carrying-state"
+    avoid_before:
+      - "control-flow-analysis-detail"
+
+  - id: "finite-state-set"
+    domain: "programming"
+    title: "Finite set of states"
+    introduced_in: "L07"
+    target_level: "explain"
+    requires:
+      - "branching"
+      - "domain-model"
+    reinforces:
+      - "when-expression-intro"
+    enables:
+      - "enum-class"
+      - "sealed-interface"
+      - "state-machine-intro"
+    avoid_before: []
+
+  - id: "enum-class"
+    domain: "kotlin"
+    title: "Enum class"
+    introduced_in: "L07"
+    target_level: "apply-independent"
+    requires:
+      - "finite-state-set"
+      - "class-declaration"
+      - "when-expression-intro"
+    reinforces:
+      - "domain-model"
+    enables:
+      - "player-model"
+      - "exhaustive-when"
+    avoid_before: []
+
+  - id: "ui-state-intro"
+    domain: "programming"
+    title: "UI state"
+    introduced_in: "L07"
+    target_level: "explain"
+    requires:
+      - "variable"
+      - "domain-model"
+      - "recomposition-observation"
+    reinforces:
+      - "assignment"
+    enables:
+      - "state-intro"
+      - "ui-state-model"
+    avoid_before: []
+
+  - id: "state-intro"
+    domain: "compose"
+    title: "State in Compose"
+    introduced_in: "L07"
+    target_level: "apply-guided"
+    requires:
+      - "ui-state-intro"
+      - "composable-function-intro"
+    reinforces:
+      - "recomposition-observation"
+    enables:
+      - "remember"
+      - "mutable-state-of"
+      - "screen-level-state"
+    avoid_before:
+      - "snapshot-system-internals"
+
+  - id: "remember"
+    domain: "compose"
+    title: "remember"
+    introduced_in: "L07"
+    target_level: "apply-guided"
+    requires:
+      - "state-intro"
+    reinforces:
+      - "composable-function-intro"
+    enables:
+      - "mutable-state-of"
+      - "stateful-composable"
+    avoid_before:
+      - "remember-saveable-detail"
+
+  - id: "mutable-state-of"
+    domain: "compose"
+    title: "mutableStateOf"
+    introduced_in: "L07"
+    target_level: "apply-guided"
+    requires:
+      - "state-intro"
+      - "remember"
+      - "variable"
+    reinforces:
+      - "recomposition-observation"
+    enables:
+      - "state-read"
+      - "state-write"
+      - "recomposition-basic-model"
+    avoid_before: []
+
+  - id: "recomposition-basic-model"
+    domain: "compose"
+    title: "Beginner mental model of recomposition"
+    introduced_in: "L07"
+    target_level: "explain"
+    requires:
+      - "mutable-state-of"
+      - "recomposition-observation"
+    reinforces:
+      - "program-source-output"
+    enables:
+      - "state-hoisting"
+      - "immutable-component-input"
+    avoid_before:
+      - "compose-runtime-internals"
+
+  - id: "function-as-value"
+    domain: "programming"
+    title: "Function as a value"
+    introduced_in: "L08"
+    target_level: "explain"
+    requires:
+      - "function-declaration"
+      - "function-parameter"
+      - "callback-parameter-intro"
+    reinforces:
+      - "value"
+    enables:
+      - "lambda-expression"
+      - "function-type"
+      - "higher-order-function"
+    avoid_before: []
+
+  - id: "predicate"
+    domain: "programming"
+    title: "Predicate"
+    introduced_in: "L08"
+    target_level: "apply-independent"
+    requires:
+      - "function-as-value"
+      - "boolean-expression"
+    reinforces:
+      - "function-parameter"
+    enables:
+      - "filter-operation"
+      - "find-operation"
+      - "any-operation"
+      - "all-operation"
+    avoid_before: []
+
+  - id: "transformation"
+    domain: "programming"
+    title: "Data transformation"
+    introduced_in: "L08"
+    target_level: "apply-independent"
+    requires:
+      - "collection"
+      - "function-as-value"
+    reinforces:
+      - "input-process-output"
+    enables:
+      - "map-operation"
+      - "immutable-list-update"
+    avoid_before: []
+
+  - id: "lambda-expression"
+    domain: "kotlin"
+    title: "Lambda expression"
+    introduced_in: "L08"
+    target_level: "apply-independent"
+    requires:
+      - "function-as-value"
+      - "function-declaration"
+    reinforces:
+      - "expression"
+    enables:
+      - "higher-order-function"
+      - "event-handler-lambda"
+      - "collection-transformations"
+    avoid_before:
+      - "lambda-with-receiver"
+
+  - id: "function-type"
+    domain: "kotlin"
+    title: "Function type"
+    introduced_in: "L08"
+    target_level: "apply-guided"
+    requires:
+      - "function-as-value"
+      - "function-parameter"
+    reinforces:
+      - "callback-parameter-intro"
+    enables:
+      - "higher-order-function"
+      - "state-down-events-up"
+    avoid_before: []
+
+  - id: "higher-order-function"
+    domain: "kotlin"
+    title: "Higher-order function"
+    introduced_in: "L08"
+    target_level: "explain"
+    requires:
+      - "function-type"
+      - "lambda-expression"
+    reinforces:
+      - "function-declaration"
+    enables:
+      - "collection-transformations"
+    avoid_before:
+      - "inline-reified-detail"
+
+  - id: "collection-transformations"
+    domain: "kotlin"
+    title: "Common collection transformations and queries"
+    introduced_in: "L08"
+    target_level: "apply-independent"
+    requires:
+      - "list"
+      - "higher-order-function"
+      - "predicate"
+      - "transformation"
+    reinforces:
+      - "iteration"
+    enables:
+      - "immutable-list-update"
+      - "pure-rule-function"
+      - "terminal-state"
+    avoid_before:
+      - "sequence-api"
+
+  - id: "immutable-list-update"
+    domain: "kotlin"
+    title: "Produce an updated list without mutating the source"
+    introduced_in: "L08"
+    target_level: "apply-independent"
+    requires:
+      - "list"
+      - "map-operation"
+      - "copy-intro"
+    reinforces:
+      - "val"
+      - "transformation"
+    enables:
+      - "ui-state-model"
+      - "state-transition"
+      - "private-mutable-public-readonly-state"
+    avoid_before: []
+
+  - id: "event-handler-lambda"
+    domain: "compose"
+    title: "Lambda used as an event handler"
+    introduced_in: "L08"
+    target_level: "apply-independent"
+    requires:
+      - "lambda-expression"
+      - "callback-parameter-intro"
+      - "onclick-callback-intro"
+    reinforces:
+      - "function-type"
+    enables:
+      - "event"
+      - "state-down-events-up"
+    avoid_before: []
+
+  - id: "state-machine-intro"
+    domain: "programming"
+    title: "State machine mental model"
+    introduced_in: "L09"
+    target_level: "explain"
+    requires:
+      - "finite-state-set"
+      - "branching"
+      - "ui-state-intro"
+    reinforces:
+      - "manual-tracing"
+    enables:
+      - "state-transition"
+      - "terminal-state"
+      - "application-ui-state"
+    avoid_before:
+      - "formal-automata-theory"
+
+  - id: "state-transition"
+    domain: "programming"
+    title: "State transition"
+    introduced_in: "L09"
+    target_level: "apply-independent"
+    requires:
+      - "state-machine-intro"
+      - "immutable-list-update"
+    reinforces:
+      - "input-process-output"
+    enables:
+      - "event-update-render-loop"
+      - "game-engine-intro"
+    avoid_before: []
+
+  - id: "invariant-intro"
+    domain: "programming"
+    title: "Invariant at a beginner level"
+    introduced_in: "L09"
+    target_level: "explain"
+    requires:
+      - "state-transition"
+      - "boolean-expression"
+    reinforces:
+      - "rule-validation"
+    enables:
+      - "edge-case-analysis"
+    avoid_before:
+      - "formal-proof"
+
+  - id: "rule-validation"
+    domain: "programming"
+    title: "Move and rule validation"
+    introduced_in: "L09"
+    target_level: "apply-independent"
+    requires:
+      - "branching"
+      - "domain-model"
+      - "collection-transformations"
+    reinforces:
+      - "boolean-expression"
+      - "function-declaration"
+    enables:
+      - "pure-rule-function"
+      - "game-engine-intro"
+    avoid_before: []
+
+  - id: "terminal-state"
+    domain: "programming"
+    title: "Terminal game state"
+    introduced_in: "L09"
+    target_level: "apply-independent"
+    requires:
+      - "state-machine-intro"
+      - "collection-transformations"
+      - "rule-validation"
+    reinforces:
+      - "finite-state-set"
+    enables:
+      - "sealed-interface"
+      - "game-engine-intro"
+    avoid_before: []
+
+  - id: "sealed-interface"
+    domain: "kotlin"
+    title: "Sealed interface"
+    introduced_in: "L09"
+    target_level: "apply-independent"
+    requires:
+      - "finite-state-set"
+      - "interface-intro"
+      - "class-declaration"
+    reinforces:
+      - "enum-class"
+    enables:
+      - "data-carrying-state"
+      - "exhaustive-when"
+      - "application-ui-state"
+    avoid_before:
+      - "complex-inheritance-hierarchy"
+
+  - id: "interface-intro"
+    domain: "kotlin"
+    title: "Interface at an introductory level"
+    introduced_in: "L09"
+    target_level: "apply-guided"
+    requires:
+      - "class-declaration"
+      - "abstraction-intro"
+    reinforces:
+      - "function-declaration"
+    enables:
+      - "sealed-interface"
+    avoid_before:
+      - "advanced-polymorphism"
+
+  - id: "data-carrying-state"
+    domain: "kotlin"
+    title: "Sealed branch carrying associated data"
+    introduced_in: "L09"
+    target_level: "apply-independent"
+    requires:
+      - "sealed-interface"
+      - "data-class"
+    reinforces:
+      - "structured-data"
+    enables:
+      - "application-ui-state"
+      - "exhaustive-state-rendering"
+    avoid_before: []
+
+  - id: "exhaustive-when"
+    domain: "kotlin"
+    title: "Exhaustive when"
+    introduced_in: "L09"
+    target_level: "apply-independent"
+    requires:
+      - "when-expression-intro"
+      - "sealed-interface"
+    reinforces:
+      - "branching"
+    enables:
+      - "screen-flow"
+      - "safe-state-rendering"
+    avoid_before: []
+
+  - id: "extension-function"
+    domain: "kotlin"
+    title: "Extension function"
+    introduced_in: "L09"
+    target_level: "apply-guided"
+    requires:
+      - "function-declaration"
+      - "class-declaration"
+    reinforces:
+      - "domain-model"
+    enables:
+      - "idiomatic-kotlin-review"
+    avoid_before:
+      - "extension-resolution-detail"
+
+  - id: "pure-rule-function"
+    domain: "architecture"
+    title: "Pure function for a game rule"
+    introduced_in: "L09"
+    target_level: "apply-independent"
+    requires:
+      - "function-declaration"
+      - "return-value"
+      - "rule-validation"
+      - "immutable-list-update"
+    reinforces:
+      - "input-process-output"
+    enables:
+      - "game-engine-intro"
+      - "unit-test-intro"
+    avoid_before: []
+
+  - id: "ui-logic-separation"
+    domain: "architecture"
+    title: "Separate game rules from UI rendering"
+    introduced_in: "L09"
+    target_level: "apply-independent"
+    requires:
+      - "component-model-boundary"
+      - "pure-rule-function"
+    reinforces:
+      - "decomposition"
+    enables:
+      - "screen-component-boundary"
+      - "viewmodel"
+    avoid_before:
+      - "clean-architecture-layers"
+
+  - id: "game-engine-intro"
+    domain: "architecture"
+    title: "Game engine or game-logic responsibility"
+    introduced_in: "L09"
+    target_level: "apply-guided"
+    requires:
+      - "domain-model"
+      - "board-as-data"
+      - "rule-validation"
+      - "state-transition"
+      - "pure-rule-function"
+    reinforces:
+      - "ui-logic-separation"
+    enables:
+      - "viewmodel"
+      - "final-project-architecture"
+    avoid_before:
+      - "repository-layer"
+
+  - id: "source-of-truth"
+    domain: "programming"
+    title: "Single source of truth"
+    introduced_in: "L10"
+    target_level: "explain"
+    requires:
+      - "ui-state-intro"
+      - "state-transition"
+    reinforces:
+      - "variable"
+    enables:
+      - "screen-level-state"
+      - "private-mutable-public-readonly-state"
+    avoid_before: []
+
+  - id: "event"
+    domain: "programming"
+    title: "User or system event"
+    introduced_in: "L10"
+    target_level: "apply-independent"
+    requires:
+      - "event-handler-lambda"
+      - "state-transition"
+    reinforces:
+      - "onclick-callback-intro"
+    enables:
+      - "state-down-events-up"
+      - "event-handler-method"
+      - "event-update-render-loop"
+    avoid_before: []
+
+  - id: "data-flow"
+    domain: "programming"
+    title: "Data flow"
+    introduced_in: "L10"
+    target_level: "explain"
+    requires:
+      - "input-process-output"
+      - "event"
+      - "ui-state-intro"
+    reinforces:
+      - "function-parameter"
+      - "return-value"
+    enables:
+      - "state-down-events-up"
+      - "unidirectional-data-flow-intro"
+    avoid_before: []
+
+  - id: "state-hoisting"
+    domain: "compose"
+    title: "State hoisting"
+    introduced_in: "L10"
+    target_level: "apply-independent"
+    requires:
+      - "state-intro"
+      - "callback-parameter-intro"
+      - "recomposition-basic-model"
+      - "source-of-truth"
+    reinforces:
+      - "parameterized-composable"
+    enables:
+      - "stateless-composable"
+      - "screen-level-state"
+      - "state-down-events-up"
+    avoid_before: []
+
+  - id: "stateful-composable"
+    domain: "compose"
+    title: "Stateful composable"
+    introduced_in: "L10"
+    target_level: "explain"
+    requires:
+      - "remember"
+      - "mutable-state-of"
+    reinforces:
+      - "state-intro"
+    enables:
+      - "state-hoisting"
+    avoid_before: []
+
+  - id: "stateless-composable"
+    domain: "compose"
+    title: "Stateless composable"
+    introduced_in: "L10"
+    target_level: "apply-independent"
+    requires:
+      - "state-hoisting"
+      - "parameterized-composable"
+      - "callback-parameter-intro"
+    reinforces:
+      - "reusable-component"
+    enables:
+      - "previewable-stateless-component"
+      - "screen-component-boundary"
+    avoid_before: []
+
+  - id: "state-down-events-up"
+    domain: "compose"
+    title: "State down, events up"
+    introduced_in: "L10"
+    target_level: "apply-independent"
+    requires:
+      - "data-flow"
+      - "state-hoisting"
+      - "event"
+      - "immutable-component-input"
+    reinforces:
+      - "callback-parameter-intro"
+    enables:
+      - "unidirectional-data-flow-intro"
+      - "viewmodel"
+      - "event-update-render-loop"
+    avoid_before: []
+
+  - id: "immutable-component-input"
+    domain: "compose"
+    title: "Immutable values as composable input"
+    introduced_in: "L10"
+    target_level: "apply-independent"
+    requires:
+      - "val"
+      - "data-class"
+      - "parameterized-composable"
+      - "recomposition-basic-model"
+    reinforces:
+      - "domain-object-as-ui-input"
+    enables:
+      - "state-down-events-up"
+      - "ui-state-model"
+    avoid_before: []
+
+  - id: "ui-state-model"
+    domain: "architecture"
+    title: "Explicit UI state model"
+    introduced_in: "L10"
+    target_level: "apply-independent"
+    requires:
+      - "data-class"
+      - "ui-state-intro"
+      - "immutable-list-update"
+      - "source-of-truth"
+    reinforces:
+      - "domain-model"
+    enables:
+      - "screen-level-state"
+      - "viewmodel"
+      - "application-ui-state"
+    avoid_before: []
+
+  - id: "screen-level-state"
+    domain: "compose"
+    title: "Screen-level state"
+    introduced_in: "L10"
+    target_level: "apply-independent"
+    requires:
+      - "state-hoisting"
+      - "ui-state-model"
+      - "source-of-truth"
+    reinforces:
+      - "stateful-composable"
+    enables:
+      - "screen-state-holder"
+      - "viewmodel"
+    avoid_before: []
+
+  - id: "screen-component-boundary"
+    domain: "architecture"
+    title: "Screen and child-component responsibilities"
+    introduced_in: "L10"
+    target_level: "apply-independent"
+    requires:
+      - "stateless-composable"
+      - "ui-logic-separation"
+      - "screen-level-state"
+    reinforces:
+      - "component-model-boundary"
+    enables:
+      - "route-vs-screen-intro"
+      - "viewmodel"
+    avoid_before: []
+
+  - id: "unidirectional-data-flow-intro"
+    domain: "architecture"
+    title: "Unidirectional data flow"
+    introduced_in: "L10"
+    target_level: "explain"
+    requires:
+      - "state-down-events-up"
+      - "state-transition"
+      - "source-of-truth"
+    reinforces:
+      - "data-flow"
+    enables:
+      - "viewmodel"
+      - "event-update-render-loop"
+    avoid_before:
+      - "reactive-streams"
+
+  - id: "viewmodel"
+    domain: "architecture"
+    title: "ViewModel"
+    introduced_in: "L11"
+    target_level: "apply-independent"
+    requires:
+      - "screen-level-state"
+      - "ui-state-model"
+      - "unidirectional-data-flow-intro"
+      - "ui-logic-separation"
+    reinforces:
+      - "source-of-truth"
+    enables:
+      - "screen-state-holder"
+      - "private-mutable-public-readonly-state"
+      - "event-handler-method"
+      - "event-update-render-loop"
+    avoid_before:
+      - "dependency-injection"
+      - "repository-layer"
+
+  - id: "screen-state-holder"
+    domain: "architecture"
+    title: "Screen state holder"
+    introduced_in: "L11"
+    target_level: "explain"
+    requires:
+      - "viewmodel"
+      - "screen-level-state"
+    reinforces:
+      - "ui-state-model"
+    enables:
+      - "application-ui-state"
+    avoid_before: []
+
+  - id: "private-mutable-public-readonly-state"
+    domain: "architecture"
+    title: "Private mutable state and public read-only state"
+    introduced_in: "L11"
+    target_level: "apply-guided"
+    requires:
+      - "viewmodel"
+      - "source-of-truth"
+      - "val"
+      - "var"
+    reinforces:
+      - "encapsulation-intro"
+    enables:
+      - "event-update-render-loop"
+    avoid_before:
+      - "stateflow-detail"
+
+  - id: "event-handler-method"
+    domain: "architecture"
+    title: "ViewModel event-handler method"
+    introduced_in: "L11"
+    target_level: "apply-independent"
+    requires:
+      - "viewmodel"
+      - "event"
+      - "function-declaration"
+      - "state-transition"
+    reinforces:
+      - "unit-return"
+    enables:
+      - "event-update-render-loop"
+    avoid_before: []
+
+  - id: "event-update-render-loop"
+    domain: "architecture"
+    title: "Event, update, render loop"
+    introduced_in: "L11"
+    target_level: "integrate"
+    requires:
+      - "event"
+      - "event-handler-method"
+      - "state-transition"
+      - "private-mutable-public-readonly-state"
+      - "state-down-events-up"
+    reinforces:
+      - "unidirectional-data-flow-intro"
+    enables:
+      - "final-project-architecture"
+      - "technical-explanation"
+    avoid_before: []
+
+  - id: "package-by-feature-intro"
+    domain: "architecture"
+    title: "Simple package-by-feature structure"
+    introduced_in: "L11"
+    target_level: "apply-guided"
+    requires:
+      - "basic-project-structure"
+      - "screen-component-boundary"
+      - "game-engine-intro"
+    reinforces:
+      - "separation-of-concerns-intro"
+    enables:
+      - "final-project-architecture"
+    avoid_before:
+      - "multi-module-architecture"
+
+  - id: "route-vs-screen-intro"
+    domain: "compose"
+    title: "Route versus stateless screen"
+    introduced_in: "L11"
+    target_level: "recognize"
+    requires:
+      - "viewmodel"
+      - "screen-component-boundary"
+      - "stateless-composable"
+    reinforces:
+      - "state-down-events-up"
+    enables:
+      - "screen-flow"
+    avoid_before:
+      - "complex-navigation"
+
+  - id: "material-theme"
+    domain: "compose"
+    title: "Material theme"
+    introduced_in: "L12"
+    target_level: "apply-guided"
+    requires:
+      - "material-component-intro"
+      - "composable-function-intro"
+      - "modifier-intro"
+    reinforces:
+      - "reusable-component"
+    enables:
+      - "coherent-application-ui"
+    avoid_before:
+      - "custom-design-system"
+
+  - id: "scaffold"
+    domain: "compose"
+    title: "Scaffold"
+    introduced_in: "L12"
+    target_level: "apply-guided"
+    requires:
+      - "material-theme"
+      - "screen-component-boundary"
+    reinforces:
+      - "column-layout"
+    enables:
+      - "screen-flow"
+    avoid_before: []
+
+  - id: "screen-flow"
+    domain: "compose"
+    title: "Simple application screen flow"
+    introduced_in: "L12"
+    target_level: "apply-independent"
+    requires:
+      - "conditional-composition"
+      - "exhaustive-when"
+      - "application-ui-state"
+      - "screen-component-boundary"
+    reinforces:
+      - "state-machine-intro"
+    enables:
+      - "handover-state"
+      - "final-project-architecture"
+    avoid_before:
+      - "complex-navigation"
+
+  - id: "application-ui-state"
+    domain: "architecture"
+    title: "Application-level UI state"
+    introduced_in: "L12"
+    target_level: "apply-independent"
+    requires:
+      - "ui-state-model"
+      - "sealed-interface"
+      - "screen-state-holder"
+    reinforces:
+      - "state-machine-intro"
+    enables:
+      - "screen-flow"
+      - "handover-state"
+    avoid_before: []
+
+  - id: "handover-state"
+    domain: "architecture"
+    title: "Same-device player handover state"
+    introduced_in: "L12"
+    target_level: "apply-guided"
+    requires:
+      - "application-ui-state"
+      - "state-transition"
+      - "screen-flow"
+    reinforces:
+      - "finite-state-set"
+    enables:
+      - "battleship-project-option"
+    avoid_before: []
+
+  - id: "requirements-to-model"
+    domain: "programming"
+    title: "Translate requirements into a model"
+    introduced_in: "L13"
+    target_level: "apply-independent"
+    requires:
+      - "domain-model"
+      - "state-machine-intro"
+      - "rule-validation"
+    reinforces:
+      - "decomposition"
+    enables:
+      - "final-project-architecture"
+    avoid_before: []
+
+  - id: "minimum-viable-scope"
+    domain: "quality"
+    title: "Minimum viable project scope"
+    introduced_in: "L13"
+    target_level: "apply-independent"
+    requires:
+      - "requirements-to-model"
+    reinforces:
+      - "decomposition"
+    enables:
+      - "definition-of-done"
+    avoid_before: []
+
+  - id: "edge-case-analysis"
+    domain: "quality"
+    title: "Edge-case analysis"
+    introduced_in: "L13"
+    target_level: "apply-guided"
+    requires:
+      - "rule-validation"
+      - "terminal-state"
+      - "invariant-intro"
+    reinforces:
+      - "manual-tracing"
+    enables:
+      - "manual-test-scenario"
+      - "regression-check"
+    avoid_before: []
+
+  - id: "manual-test-scenario"
+    domain: "quality"
+    title: "Manual test scenario"
+    introduced_in: "L13"
+    target_level: "apply-independent"
+    requires:
+      - "edge-case-analysis"
+      - "program-source-output"
+    reinforces:
+      - "build-run-cycle"
+    enables:
+      - "definition-of-done"
+      - "regression-check"
+    avoid_before: []
+
+  - id: "systematic-debugging"
+    domain: "tooling"
+    title: "Systematic debugging"
+    introduced_in: "L13"
+    target_level: "apply-independent"
+    requires:
+      - "manual-tracing"
+      - "debugger-intro"
+      - "build-run-cycle"
+    reinforces:
+      - "program-source-output"
+    enables:
+      - "project-retrospective"
+    avoid_before: []
+
+  - id: "final-project-architecture"
+    domain: "architecture"
+    title: "Integrated final-project architecture"
+    introduced_in: "L13"
+    target_level: "integrate"
+    requires:
+      - "domain-model"
+      - "game-engine-intro"
+      - "ui-state-model"
+      - "viewmodel"
+      - "screen-component-boundary"
+      - "event-update-render-loop"
+      - "screen-flow"
+    reinforces:
+      - "package-by-feature-intro"
+    enables:
+      - "technical-explanation"
+      - "definition-of-done"
+    avoid_before:
+      - "dependency-injection"
+      - "repository-layer"
+      - "multi-module-architecture"
+
+  - id: "refactoring"
+    domain: "quality"
+    title: "Refactoring"
+    introduced_in: "L14"
+    target_level: "apply-independent"
+    requires:
+      - "decomposition"
+      - "systematic-debugging"
+      - "final-project-architecture"
+    reinforces:
+      - "function-declaration"
+      - "ui-logic-separation"
+    enables:
+      - "idiomatic-kotlin-review"
+      - "regression-check"
+    avoid_before: []
+
+  - id: "code-smell-intro"
+    domain: "quality"
+    title: "Basic code smells"
+    introduced_in: "L14"
+    target_level: "explain"
+    requires:
+      - "decomposition"
+      - "reusable-component"
+      - "ui-logic-separation"
+    reinforces:
+      - "refactoring"
+    enables:
+      - "project-retrospective"
+    avoid_before:
+      - "formal-static-analysis"
+
+  - id: "idiomatic-kotlin-review"
+    domain: "kotlin"
+    title: "Selected idiomatic Kotlin review"
+    introduced_in: "L14"
+    target_level: "apply-guided"
+    requires:
+      - "val"
+      - "expression-body"
+      - "collection-transformations"
+      - "extension-function"
+      - "exhaustive-when"
+      - "refactoring"
+    reinforces:
+      - "type-inference"
+      - "copy-intro"
+    enables:
+      - "readable-final-project"
+    avoid_before:
+      - "clever-code-compression"
+
+  - id: "scope-function-selected-use"
+    domain: "kotlin"
+    title: "Selected scope-function usage"
+    introduced_in: "L14"
+    target_level: "recognize"
+    requires:
+      - "lambda-expression"
+      - "instance"
+      - "property"
+      - "local-scope"
+    reinforces:
+      - "idiomatic-kotlin-review"
+    enables: []
+    avoid_before:
+      - "scope-function-taxonomy-as-core"
+
+  - id: "regression-check"
+    domain: "quality"
+    title: "Regression check after refactoring"
+    introduced_in: "L14"
+    target_level: "apply-independent"
+    requires:
+      - "refactoring"
+      - "manual-test-scenario"
+    reinforces:
+      - "build-run-cycle"
+    enables:
+      - "definition-of-done"
+    avoid_before: []
+
+  - id: "definition-of-done"
+    domain: "quality"
+    title: "Definition of done"
+    introduced_in: "L14"
+    target_level: "apply-independent"
+    requires:
+      - "minimum-viable-scope"
+      - "manual-test-scenario"
+      - "regression-check"
+    reinforces:
+      - "requirements-to-model"
+    enables:
+      - "project-retrospective"
+    avoid_before: []
+
+  - id: "technical-explanation"
+    domain: "quality"
+    title: "Explain architecture and behavior"
+    introduced_in: "L14"
+    target_level: "integrate"
+    requires:
+      - "final-project-architecture"
+      - "event-update-render-loop"
+      - "manual-tracing"
+    reinforces:
+      - "program-source-output"
+    enables:
+      - "project-retrospective"
+    avoid_before: []
+
+  - id: "project-retrospective"
+    domain: "quality"
+    title: "Project retrospective"
+    introduced_in: "L14"
+    target_level: "apply-independent"
+    requires:
+      - "definition-of-done"
+      - "technical-explanation"
+      - "systematic-debugging"
+    reinforces:
+      - "refactoring"
+    enables: []
+    avoid_before: []
+
+supporting_concepts:
+  - id: "abstraction-intro"
+    introduced_in: "L04"
+    status: "supporting"
+    description: "A useful name and boundary that hides unnecessary detail"
+    requires:
+      - "decomposition"
+
+  - id: "encapsulation-intro"
+    introduced_in: "L05"
+    status: "supporting"
+    description: "Keeping related state and allowed changes behind a clear boundary"
+    requires:
+      - "class-declaration"
+      - "local-scope"
+
+  - id: "material-component-intro"
+    introduced_in: "L02"
+    status: "supporting"
+    description: "Use ready-made Material UI components consistently"
+    requires:
+      - "composable-function-intro"
+
+  - id: "collection-iteration"
+    introduced_in: "L06"
+    status: "supporting"
+    description: "Iterate over the elements of a collection"
+    requires:
+      - "for-loop"
+      - "collection"
+
+  - id: "map-operation"
+    introduced_in: "L08"
+    status: "supporting"
+    description: "Transform every element into a corresponding result"
+    requires:
+      - "collection-transformations"
+
+  - id: "filter-operation"
+    introduced_in: "L08"
+    status: "supporting"
+    description: "Retain collection elements satisfying a predicate"
+    requires:
+      - "collection-transformations"
+
+  - id: "find-operation"
+    introduced_in: "L08"
+    status: "supporting"
+    description: "Find the first element satisfying a predicate"
+    requires:
+      - "collection-transformations"
+      - "nullable-type"
+
+  - id: "any-operation"
+    introduced_in: "L08"
+    status: "supporting"
+    description: "Check whether at least one element satisfies a predicate"
+    requires:
+      - "collection-transformations"
+
+  - id: "all-operation"
+    introduced_in: "L08"
+    status: "supporting"
+    description: "Check whether all elements satisfy a predicate"
+    requires:
+      - "collection-transformations"
+
+  - id: "count-operation"
+    introduced_in: "L08"
+    status: "supporting"
+    description: "Count elements, optionally using a predicate"
+    requires:
+      - "collection-transformations"
+
+  - id: "map-indexed-intro"
+    introduced_in: "L08"
+    status: "supporting"
+    description: "Transform elements while also using their indices"
+    requires:
+      - "map-operation"
+      - "index"
+
+deferred_concepts:
+  - id: "generic-declaration"
+    earliest_optional_after: "L08"
+    reason: >-
+      Learners must read types such as List<Cell>, but declaring generic APIs
+      is not required by the final project.
+
+  - id: "variance"
+    earliest_optional_after: "L14"
+    reason: "Not required for the course outcomes."
+
+  - id: "custom-iterator"
+    earliest_optional_after: "L14"
+    reason: "Standard collection iteration is sufficient."
+
+  - id: "operator-overloading"
+    earliest_optional_after: "L14"
+    reason: "Adds syntax without solving a core beginner project problem."
+
+  - id: "infix-functions"
+    earliest_optional_after: "L14"
+    reason: "Not required to understand or implement the target architecture."
+
+  - id: "delegation"
+    earliest_optional_after: "L14"
+    reason: "Useful Kotlin feature but not required for the final project."
+
+  - id: "lazy-properties"
+    earliest_optional_after: "L14"
+    reason: "No core use case justifies classroom time in this course."
+
+  - id: "coroutines"
+    earliest_optional_after: "L14"
+    reason: "The selected games require no asynchronous work."
+
+  - id: "stateflow"
+    earliest_optional_after: "L11"
+    reason: >-
+      It may be used by an advanced implementation baseline, but it must not
+      become a hidden prerequisite.
+
+  - id: "repository-layer"
+    earliest_optional_after: "L14"
+    reason: "The course has no persistence or remote data source."
+
+  - id: "dependency-injection"
+    earliest_optional_after: "L14"
+    reason: "The small project does not require a DI framework."
+
+  - id: "room"
+    earliest_optional_after: "L14"
+    reason: "Persistence is outside the core scope."
+
+  - id: "advanced-navigation"
+    earliest_optional_after: "L14"
+    reason: "A small explicit screen-state flow is sufficient."
+
+validation:
+  invariants:
+    - id: "CDM-01"
+      rule: "Each core concept must have exactly one introduced_in lesson."
+
+    - id: "CDM-02"
+      rule: "A required concept must be introduced earlier than its dependent concept."
+
+    - id: "CDM-03"
+      rule: "No deferred concept may be required by a core concept."
+
+    - id: "CDM-04"
+      rule: "Every lesson concept ID in 02-course-map.yaml must resolve here."
+
+    - id: "CDM-05"
+      rule: "Every concept used in an exercise must be introduced or explicitly scaffolded."
+
+    - id: "CDM-06"
+      rule: "Architecture concepts must be motivated by an observed complexity problem."
+
+    - id: "CDM-07"
+      rule: "StateFlow, Hilt, Room, and repositories are not core prerequisites."
+
+    - id: "CDM-08"
+      rule: "The final architecture must remain explainable through event-update-render-loop."
+
+  generation_failure_conditions:
+    - "A generated lesson uses an unresolved concept ID."
+    - "A generated lesson requires a concept scheduled for a later lesson."
+    - "A code exercise requires a deferred concept without marking it optional."
+    - "A lesson introduces ViewModel before state hoisting and UI state."
+    - "A lesson introduces collection transformations before functions and lists."
+    - "A lesson introduces sealed game state before basic branching, classes, and finite states."
+    - "A final project places all game rules inside composables."
+    - "A reusable cell component directly owns the complete board state."

@@ -1,0 +1,1666 @@
+schema_version: "0.1"
+artifact:
+  id: "course-map"
+  title: "Kotlin for Android Fundamentals Course Map"
+  status: "draft"
+  version: "0.1.0"
+  last_reviewed: "2026-10-29"
+  depends_on:
+    - "01-course-contract.md"
+    - "03-concept-dependency-map.yaml"
+
+course:
+  id: "kaf"
+  title: "Kotlin for Android Fundamentals"
+  audience: "Absolute beginners in programming"
+  language_of_instruction: "uk"
+  technical_vocabulary_language: "en"
+  sessions: 14
+  minutes_per_session: 120
+  total_instructor_led_minutes: 1680
+  delivery_mode:
+    - "instructor-led explanation"
+    - "live coding"
+    - "embedded Kotlin sandbox"
+    - "Android Studio lab"
+    - "guided practice"
+    - "independent project work"
+
+  central_question: >-
+    How can values, functions, types, collections, state, and UI components
+    work together to create a playable Android grid game?
+
+  final_capability: >-
+    The learner can implement and explain a small state-driven Android
+    application using Kotlin, Jetpack Compose, a ViewModel, immutable UI state,
+    screens, and reusable components.
+
+progression:
+  phases:
+    - id: "phase-1"
+      title: "I can make a program do something"
+      lessons: ["L01", "L02", "L03", "L04"]
+      milestone: "M-A"
+
+    - id: "phase-2"
+      title: "I can model data and a board"
+      lessons: ["L05", "L06", "L07"]
+      milestone: "M-B"
+
+    - id: "phase-3"
+      title: "I can implement game behavior"
+      lessons: ["L08", "L09", "L10"]
+      milestone: "M-C"
+
+    - id: "phase-4"
+      title: "I can structure and complete an Android app"
+      lessons: ["L11", "L12", "L13", "L14"]
+      milestone: "M-D"
+
+  cognitive_support:
+    L01: "copy-observe-modify"
+    L02: "predict-run-modify"
+    L03: "trace-complete-modify"
+    L04: "decompose-complete-create"
+    L05: "model-from-example"
+    L06: "guided-modeling"
+    L07: "guided-integration"
+    L08: "partial-independent-implementation"
+    L09: "rule-implementation-with-scaffolding"
+    L10: "independent-feature-implementation"
+    L11: "guided-refactoring"
+    L12: "architecture-guided-practice"
+    L13: "independent-project-work"
+    L14: "independent-completion-and-explanation"
+
+timing:
+  total_minutes:
+    kotlin_programming: 820
+    android_compose: 860
+
+  lessons:
+    L01: { kotlin_programming: 90, android_compose: 30 }
+    L02: { kotlin_programming: 80, android_compose: 40 }
+    L03: { kotlin_programming: 80, android_compose: 40 }
+    L04: { kotlin_programming: 80, android_compose: 40 }
+    L05: { kotlin_programming: 75, android_compose: 45 }
+    L06: { kotlin_programming: 70, android_compose: 50 }
+    L07: { kotlin_programming: 60, android_compose: 60 }
+    L08: { kotlin_programming: 60, android_compose: 60 }
+    L09: { kotlin_programming: 50, android_compose: 70 }
+    L10: { kotlin_programming: 45, android_compose: 75 }
+    L11: { kotlin_programming: 40, android_compose: 80 }
+    L12: { kotlin_programming: 30, android_compose: 90 }
+    L13: { kotlin_programming: 30, android_compose: 90 }
+    L14: { kotlin_programming: 30, android_compose: 90 }
+
+lessons:
+  - id: "L01"
+    order: 1
+    slug: "first-program-first-app"
+    title: "From Zero to the First Interactive Android App"
+    phase: "phase-1"
+    dominant_transition: "From using software to giving a computer explicit instructions"
+
+    essential_question: >-
+      How can source code store data, calculate a result, and cause a visible
+      change in an Android application?
+
+    prerequisites:
+      concepts: []
+      learner_capabilities:
+        - "Use files and folders"
+        - "Install and launch Android Studio"
+        - "Perform basic arithmetic"
+
+    outcomes:
+      - "Explain the difference between source code and program output"
+      - "Evaluate simple expressions"
+      - "Declare values with val and variables with var"
+      - "Use Int, Double, Boolean, and String in simple examples"
+      - "Call a function"
+      - "Run a Kotlin program"
+      - "Run an Android app on an emulator or device"
+      - "Modify Text and Button composables"
+      - "Explain that a button callback runs after a user action"
+
+    new_concepts:
+      programming:
+        - "program-source-output"
+        - "expression"
+        - "value"
+        - "variable"
+        - "assignment"
+        - "basic-type"
+        - "function-call"
+      kotlin:
+        - "main-function"
+        - "val"
+        - "var"
+        - "int-type"
+        - "double-type"
+        - "boolean-type"
+        - "string-type"
+        - "type-inference"
+        - "string-template"
+        - "println"
+      android:
+        - "android-studio-project"
+        - "build-run-cycle"
+        - "emulator-or-device"
+        - "basic-project-structure"
+      compose:
+        - "composable-function-intro"
+        - "text-composable"
+        - "button-composable"
+        - "onclick-callback-intro"
+        - "recomposition-observation"
+
+    reinforced_concepts: []
+
+    explicitly_deferred:
+      - "Formal function declarations"
+      - "Detailed state model"
+      - "Compose lifecycle"
+      - "Gradle internals"
+      - "Activity lifecycle"
+
+    sandbox:
+      title: "Values, calculations, and printed output"
+      tasks:
+        - "Predict arithmetic expression results"
+        - "Change val values and observe output"
+        - "Use string templates to compose a message"
+        - "Find and fix a basic type mismatch"
+
+    android_lab:
+      title: "Build a Counter or Clicker app"
+      required_features:
+        - "Display a title"
+        - "Display a numeric value"
+        - "Provide a button"
+        - "Change the displayed value after a click"
+      scaffolding:
+        - "A minimal project template may be provided"
+        - "State-related code may initially be treated as provided infrastructure"
+
+    observable_result: "A running Android app with a button and visible changing value"
+
+    project_evolution:
+      artifact: "interaction-spike"
+      contribution: >-
+        Establishes the event-to-visible-result mental model used later by
+        game-cell clicks.
+
+    common_misconceptions:
+      - "A variable name is the same thing as the value stored in it"
+      - "Every line of code runs continuously"
+      - "Changing source code automatically changes a running app"
+      - "Composable functions are visual objects rather than function calls"
+
+    assessment:
+      evidence:
+        - "Predicts the result of a short expression"
+        - "Explains val versus var in plain language"
+        - "Runs the app and changes visible text"
+        - "Identifies which code handles a button click"
+
+    homework:
+      core: "Add decrement and reset controls to the counter"
+      challenge: "Add a message that changes when the count reaches a threshold"
+
+  - id: "L02"
+    order: 2
+    slug: "decisions-and-conditional-ui"
+    title: "Decisions and Conditional UI"
+    phase: "phase-1"
+    dominant_transition: "From fixed execution to behavior that depends on data"
+
+    essential_question: >-
+      How can a program choose different behavior and display different UI
+      according to current data?
+
+    prerequisites:
+      concepts:
+        - "expression"
+        - "value"
+        - "variable"
+        - "basic-type"
+        - "function-call"
+        - "composable-function-intro"
+        - "onclick-callback-intro"
+
+    outcomes:
+      - "Create Boolean expressions using comparisons"
+      - "Use if for branching and as an expression"
+      - "Use when for a small closed set of alternatives"
+      - "Use ranges in simple conditions"
+      - "Render different text or components according to state"
+      - "Arrange basic UI with Row and Column"
+      - "Use basic modifiers for padding and size"
+
+    new_concepts:
+      programming:
+        - "comparison"
+        - "boolean-expression"
+        - "branching"
+        - "mutually-exclusive-conditions"
+      kotlin:
+        - "comparison-operators"
+        - "logical-operators"
+        - "if-statement"
+        - "if-expression"
+        - "when-expression-intro"
+        - "range-intro"
+        - "random-value-intro"
+      compose:
+        - "column-layout"
+        - "row-layout"
+        - "modifier-intro"
+        - "conditional-composition"
+        - "material-component-intro"
+
+    reinforced_concepts:
+      - "expression"
+      - "boolean-type"
+      - "var"
+      - "onclick-callback-intro"
+      - "recomposition-observation"
+
+    explicitly_deferred:
+      - "Exhaustive when over sealed types"
+      - "Complex Material theming"
+      - "Formal state hoisting"
+
+    sandbox:
+      title: "From conditions to decisions"
+      tasks:
+        - "Predict which branch executes"
+        - "Repair overlapping or unreachable conditions"
+        - "Convert a simple if chain to when"
+        - "Classify values using a range"
+
+    android_lab:
+      title: "Build a Dice Roller or Guessing app"
+      required_features:
+        - "Generate or accept a value"
+        - "Display different feedback for different value ranges"
+        - "Use at least one Row or Column"
+        - "Respond to a button click"
+
+    observable_result: "An app whose visible response depends on current data"
+
+    project_evolution:
+      artifact: "conditional-feedback-spike"
+      contribution: >-
+        Introduces the decision structures later used for move validation and
+        game-status rendering.
+
+    common_misconceptions:
+      - "A condition is text describing a rule rather than a Boolean expression"
+      - "All if branches execute"
+      - "An if expression and an if statement are unrelated constructs"
+      - "Conditional UI permanently creates and hides every branch"
+
+    assessment:
+      evidence:
+        - "Predicts a branch selected for a given input"
+        - "Writes a Boolean condition"
+        - "Uses when to select displayed feedback"
+        - "Explains why changing data changes the visible branch"
+
+    homework:
+      core: "Add at least three feedback states to the app"
+      challenge: "Prevent invalid input or display a dedicated invalid state"
+
+  - id: "L03"
+    order: 3
+    slug: "repetition-and-grid-thinking"
+    title: "Repetition, Algorithms, and Grid Thinking"
+    phase: "phase-1"
+    dominant_transition: "From manually repeated steps to algorithmic repetition"
+
+    essential_question: >-
+      How can a program repeat an operation and use nested repetition to
+      construct a grid?
+
+    prerequisites:
+      concepts:
+        - "variable"
+        - "assignment"
+        - "boolean-expression"
+        - "branching"
+        - "range-intro"
+        - "column-layout"
+        - "row-layout"
+
+    outcomes:
+      - "Trace a while loop"
+      - "Use a for loop with a range"
+      - "Explain initialization, condition, and update"
+      - "Use nested loops to reason about rows and columns"
+      - "Recognize an infinite-loop condition"
+      - "Generate repeated Compose UI"
+      - "Build a static grid-like interface"
+
+    new_concepts:
+      programming:
+        - "algorithm"
+        - "iteration"
+        - "loop-invariant-intro"
+        - "nested-iteration"
+        - "row-column-coordinate"
+        - "manual-tracing"
+      kotlin:
+        - "while-loop"
+        - "for-loop"
+        - "range-iteration"
+        - "repeat-function"
+        - "index-variable"
+      compose:
+        - "repeated-composition"
+        - "nested-layout"
+        - "preview-intro"
+      tooling:
+        - "debugger-intro"
+        - "breakpoint-intro"
+        - "step-over-intro"
+
+    reinforced_concepts:
+      - "var"
+      - "assignment"
+      - "comparison"
+      - "range-intro"
+      - "row-layout"
+      - "column-layout"
+
+    explicitly_deferred:
+      - "Collection iterators"
+      - "Lazy grid"
+      - "Game board as a collection"
+      - "Algorithmic complexity"
+
+    sandbox:
+      title: "Trace and build loops"
+      tasks:
+        - "Trace loop variables in a table"
+        - "Fix an infinite loop"
+        - "Generate a numeric sequence"
+        - "Generate row and column coordinates"
+
+    android_lab:
+      title: "Build a static board prototype"
+      required_features:
+        - "Display multiple rows"
+        - "Display multiple cells per row"
+        - "Give each cell a visible coordinate or value"
+        - "Use generated UI rather than copied cell markup"
+
+    observable_result: "A generated static grid displayed in Compose"
+
+    project_evolution:
+      artifact: "static-board-prototype"
+      contribution: >-
+        Establishes grid coordinates and repeated rendering before introducing
+        collections and interactive cells.
+
+    common_misconceptions:
+      - "A loop executes all iterations simultaneously"
+      - "The loop variable can never change"
+      - "Nested loops always imply a two-dimensional array"
+      - "Repeated composables preserve independent state automatically"
+
+    assessment:
+      evidence:
+        - "Traces at least three iterations"
+        - "Explains why a loop terminates"
+        - "Generates coordinates for a small board"
+        - "Builds repeated Compose cells"
+
+    homework:
+      core: "Create a checkerboard-style visual pattern"
+      challenge: "Calculate a cell number from its row and column"
+
+  - id: "L04"
+    order: 4
+    slug: "functions-and-components"
+    title: "Functions, Decomposition, and Reusable UI Components"
+    phase: "phase-1"
+    dominant_transition: "From a sequence of instructions to named reusable behavior"
+
+    essential_question: >-
+      How can functions make behavior and UI easier to understand, reuse,
+      test, and change?
+
+    prerequisites:
+      concepts:
+        - "function-call"
+        - "expression"
+        - "branching"
+        - "iteration"
+        - "composable-function-intro"
+        - "repeated-composition"
+
+    outcomes:
+      - "Declare a function"
+      - "Use parameters and return values"
+      - "Distinguish a function input from its result"
+      - "Explain local scope"
+      - "Decompose an algorithm into small named functions"
+      - "Create a reusable composable with parameters"
+      - "Pass a click callback to a reusable component"
+
+    new_concepts:
+      programming:
+        - "decomposition"
+        - "abstraction-intro"
+        - "input-process-output"
+        - "local-scope"
+      kotlin:
+        - "function-declaration"
+        - "function-parameter"
+        - "return-value"
+        - "unit-return"
+        - "expression-body"
+        - "named-argument"
+        - "default-argument"
+      compose:
+        - "parameterized-composable"
+        - "reusable-component"
+        - "callback-parameter-intro"
+        - "component-api-intro"
+
+    reinforced_concepts:
+      - "function-call"
+      - "expression"
+      - "branching"
+      - "row-column-coordinate"
+      - "button-composable"
+
+    explicitly_deferred:
+      - "Higher-order function terminology"
+      - "Function-type syntax in depth"
+      - "State hoisting"
+      - "Extension functions"
+
+    sandbox:
+      title: "Turn repeated logic into functions"
+      tasks:
+        - "Identify duplicated code"
+        - "Extract a function"
+        - "Add a parameter"
+        - "Return a calculated result"
+        - "Distinguish printing from returning"
+
+    android_lab:
+      title: "Extract a reusable GameCell prototype"
+      required_features:
+        - "Accept displayed content as a parameter"
+        - "Accept an enabled or selected state"
+        - "Accept a click callback"
+        - "Render multiple cells using the same composable"
+
+    observable_result: "A small app composed from reusable functions and UI components"
+
+    project_evolution:
+      artifact: "reusable-cell-component"
+      contribution: >-
+        Establishes the component boundary that later becomes GameCell.
+
+    common_misconceptions:
+      - "Returning and printing are the same action"
+      - "A parameter permanently stores a value"
+      - "All variables are visible to all functions"
+      - "Calling a composable and declaring it are the same operation"
+
+    assessment:
+      evidence:
+        - "Writes a function with a parameter and return value"
+        - "Explains local scope"
+        - "Extracts duplicated UI into a component"
+        - "Explains what information the component receives"
+
+    homework:
+      core: "Refactor the previous board prototype into reusable composables"
+      challenge: "Design a component API that supports two visual cell states"
+
+  - id: "L05"
+    order: 5
+    slug: "objects-and-domain-data"
+    title: "Objects, Classes, and Domain Data"
+    phase: "phase-2"
+    dominant_transition: "From unrelated values to structured domain entities"
+
+    essential_question: >-
+      How can a program represent a game concept as one meaningful value
+      containing related properties?
+
+    prerequisites:
+      concepts:
+        - "basic-type"
+        - "function-declaration"
+        - "function-parameter"
+        - "return-value"
+        - "local-scope"
+        - "reusable-component"
+
+    outcomes:
+      - "Explain the relationship between a class and an instance"
+      - "Define a class with constructor properties"
+      - "Use a data class to represent structured values"
+      - "Read and update object properties appropriately"
+      - "Distinguish identity-oriented objects from value-oriented data"
+      - "Pass a domain object to a composable"
+
+    new_concepts:
+      programming:
+        - "domain-model"
+        - "entity"
+        - "structured-data"
+        - "state-vs-behavior-intro"
+      kotlin:
+        - "class-declaration"
+        - "instance"
+        - "primary-constructor"
+        - "property"
+        - "member-function"
+        - "data-class"
+        - "equality-intro"
+        - "copy-intro"
+      compose:
+        - "domain-object-as-ui-input"
+        - "component-model-boundary"
+
+    reinforced_concepts:
+      - "function-parameter"
+      - "return-value"
+      - "parameterized-composable"
+      - "row-column-coordinate"
+
+    explicitly_deferred:
+      - "Inheritance hierarchy"
+      - "Advanced encapsulation"
+      - "Generics declaration"
+      - "Delegation"
+
+    sandbox:
+      title: "Model players, positions, and cells"
+      tasks:
+        - "Create class instances"
+        - "Read properties"
+        - "Compare data-class values"
+        - "Use copy to create a changed value"
+        - "Choose properties for a Cell model"
+
+    android_lab:
+      title: "Render a Cell model"
+      required_features:
+        - "Define a Cell data class"
+        - "Display its row and column"
+        - "Pass Cell to a reusable composable"
+        - "Render at least two visual cell states"
+
+    observable_result: "A UI rendered from structured domain values"
+
+    project_evolution:
+      artifact: "cell-domain-model"
+      contribution: >-
+        Replaces anonymous grid positions with explicit Cell values.
+
+    common_misconceptions:
+      - "A class and an object instance are identical"
+      - "Every class must contain mutable properties"
+      - "A data class is a database table"
+      - "copy changes the original object"
+
+    assessment:
+      evidence:
+        - "Defines a Cell data class"
+        - "Creates and reads an instance"
+        - "Explains why related values belong together"
+        - "Uses a domain value as component input"
+
+    homework:
+      core: "Extend Cell with a value representing its current content"
+      challenge: "Model Position separately and compare the two designs"
+
+  - id: "L06"
+    order: 6
+    slug: "collections-and-board-model"
+    title: "Collections and the Board Model"
+    phase: "phase-2"
+    dominant_transition: "From individual domain values to a collection representing the board"
+
+    essential_question: >-
+      How can one collection represent all cells of a board and serve as the
+      data source for UI rendering?
+
+    prerequisites:
+      concepts:
+        - "iteration"
+        - "for-loop"
+        - "data-class"
+        - "property"
+        - "domain-object-as-ui-input"
+        - "repeated-composition"
+
+    outcomes:
+      - "Create and access a List"
+      - "Explain indices and valid index ranges"
+      - "Iterate over a collection"
+      - "Distinguish practical read-only and mutable collection usage"
+      - "Recognize List, Set, and Map use cases"
+      - "Represent a board as a list of cells"
+      - "Render collection items in Compose"
+      - "Use a lazy list or grid at an introductory level"
+
+    new_concepts:
+      programming:
+        - "collection"
+        - "index"
+        - "collection-size"
+        - "out-of-bounds"
+        - "board-as-data"
+      kotlin:
+        - "list"
+        - "list-of"
+        - "mutable-list"
+        - "get-by-index"
+        - "set-intro"
+        - "map-collection-intro"
+        - "list-builder-intro"
+      compose:
+        - "collection-driven-ui"
+        - "lazy-list-intro"
+        - "lazy-grid-intro"
+        - "stable-item-key-intro"
+
+    reinforced_concepts:
+      - "for-loop"
+      - "range-iteration"
+      - "data-class"
+      - "reusable-component"
+      - "repeated-composition"
+
+    explicitly_deferred:
+      - "Generic type declarations"
+      - "Variance"
+      - "Custom iterators"
+      - "Advanced lazy layout performance"
+
+    sandbox:
+      title: "From cells to a board"
+      tasks:
+        - "Read list elements"
+        - "Predict valid and invalid indices"
+        - "Iterate over cells"
+        - "Create a board of a specified size"
+        - "Find a cell by position using a loop"
+
+    android_lab:
+      title: "Render a board from List<Cell>"
+      required_features:
+        - "Create the board as data"
+        - "Render cells from the collection"
+        - "Avoid separately declared cell composables"
+        - "Display stable coordinates or values"
+
+    observable_result: "A board UI generated from a collection of Cell values"
+
+    project_evolution:
+      artifact: "board-domain-model"
+      contribution: >-
+        Establishes List<Cell> as the single board representation used by
+        subsequent game logic.
+
+    common_misconceptions:
+      - "List size is the last valid index"
+      - "A read-only List guarantees deep immutability"
+      - "Changing a rendered cell changes the list automatically"
+      - "A grid must be represented as nested lists"
+
+    assessment:
+      evidence:
+        - "Creates and iterates over List<Cell>"
+        - "Explains an index error"
+        - "Renders the board from the collection"
+        - "Explains why the collection is the UI data source"
+
+    homework:
+      core: "Generate boards of at least two different sizes"
+      challenge: "Compare flat-list and nested-list board representations"
+
+  - id: "L07"
+    order: 7
+    slug: "nullability-enums-and-local-state"
+    title: "Nullability, Enums, and Local UI State"
+    phase: "phase-2"
+    dominant_transition: "From an always-present value to explicit empty and constrained states"
+
+    essential_question: >-
+      How can Kotlin accurately represent an empty cell, a current player,
+      and UI state that changes over time?
+
+    prerequisites:
+      concepts:
+        - "basic-type"
+        - "branching"
+        - "when-expression-intro"
+        - "data-class"
+        - "list"
+        - "collection-driven-ui"
+        - "recomposition-observation"
+
+    outcomes:
+      - "Explain why nullable types exist"
+      - "Use nullable type syntax"
+      - "Use safe calls and the Elvis operator"
+      - "Use a basic smart cast"
+      - "Define and use an enum"
+      - "Model an empty or occupied cell"
+      - "Use remember and mutableStateOf in a local example"
+      - "Explain state-driven recomposition at a basic level"
+
+    new_concepts:
+      programming:
+        - "absence-of-value"
+        - "invalid-state-modeling"
+        - "finite-state-set"
+        - "ui-state-intro"
+      kotlin:
+        - "nullable-type"
+        - "null-value"
+        - "safe-call"
+        - "elvis-operator"
+        - "null-check"
+        - "smart-cast-intro"
+        - "enum-class"
+      compose:
+        - "state-intro"
+        - "remember"
+        - "mutable-state-of"
+        - "state-read"
+        - "state-write"
+        - "recomposition-basic-model"
+
+    reinforced_concepts:
+      - "when-expression-intro"
+      - "data-class"
+      - "copy-intro"
+      - "collection-driven-ui"
+      - "onclick-callback-intro"
+
+    explicitly_deferred:
+      - "Not-null assertion as normal practice"
+      - "Sealed state hierarchy"
+      - "State hoisting"
+      - "ViewModel"
+      - "StateFlow"
+
+    sandbox:
+      title: "Model empty cells and players"
+      tasks:
+        - "Distinguish nullable and non-null types"
+        - "Replace unsafe access with safe handling"
+        - "Render different output for null and non-null values"
+        - "Define a Player enum"
+        - "Use when with enum values"
+
+    android_lab:
+      title: "Build an interactive Tic-Tac-Toe board prototype"
+      required_features:
+        - "Represent an empty cell"
+        - "Represent at least two player marks"
+        - "Change a cell after a click"
+        - "Display the current player"
+        - "Prevent replacing an occupied cell"
+
+    observable_result: "An interactive board with locally managed state"
+
+    project_evolution:
+      artifact: "interactive-board-prototype"
+      contribution: >-
+        Adds empty and occupied cell states, players, and basic interaction.
+
+    common_misconceptions:
+      - "A nullable type always contains null"
+      - "The safe-call operator fixes all null-related logic"
+      - "An enum is a collection of strings"
+      - "remember stores data permanently"
+      - "Recomposition restarts the entire application"
+
+    assessment:
+      evidence:
+        - "Explains the meaning of Player?"
+        - "Uses safe null handling"
+        - "Defines Player as an enum"
+        - "Explains what state changes after a cell click"
+
+    homework:
+      core: "Add turn switching and prevent illegal replacement"
+      challenge: "Visually distinguish the last move"
+
+  - id: "L08"
+    order: 8
+    slug: "lambdas-and-collection-transformations"
+    title: "Lambdas and Collection Transformations"
+    phase: "phase-3"
+    dominant_transition: "From step-by-step collection loops to declarative transformations"
+
+    essential_question: >-
+      How can functions be passed as values to search, transform, and query
+      game data?
+
+    prerequisites:
+      concepts:
+        - "function-declaration"
+        - "function-parameter"
+        - "return-value"
+        - "collection"
+        - "list"
+        - "data-class"
+        - "nullable-type"
+        - "callback-parameter-intro"
+
+    outcomes:
+      - "Explain that a function can be treated as a value"
+      - "Read basic lambda syntax"
+      - "Use map, filter, find, any, all, and count"
+      - "Choose between a loop and a collection operation"
+      - "Use copy to produce updated immutable values"
+      - "Update one cell in a board collection"
+      - "Connect callbacks with higher-order functions"
+
+    new_concepts:
+      programming:
+        - "function-as-value"
+        - "transformation"
+        - "predicate"
+        - "declarative-collection-processing"
+      kotlin:
+        - "lambda-expression"
+        - "function-type"
+        - "higher-order-function"
+        - "trailing-lambda"
+        - "map-operation"
+        - "filter-operation"
+        - "find-operation"
+        - "any-operation"
+        - "all-operation"
+        - "count-operation"
+        - "map-indexed-intro"
+        - "immutable-list-update"
+      compose:
+        - "event-handler-lambda"
+        - "immutable-component-input"
+
+    reinforced_concepts:
+      - "copy-intro"
+      - "callback-parameter-intro"
+      - "list"
+      - "collection-driven-ui"
+      - "onclick-callback-intro"
+
+    explicitly_deferred:
+      - "Receivers"
+      - "Inline functions"
+      - "Sequences"
+      - "Flow"
+      - "Functional programming theory"
+
+    sandbox:
+      title: "Query and transform a game board"
+      tasks:
+        - "Rewrite a search loop using find"
+        - "Find all empty cells"
+        - "Count occupied cells"
+        - "Check whether any legal move exists"
+        - "Update one cell without modifying the original list"
+
+    android_lab:
+      title: "Refactor board updates using collection transformations"
+      required_features:
+        - "Use an immutable board value"
+        - "Produce a new board after a legal move"
+        - "Preserve cells not affected by the move"
+        - "Keep visual components free from board mutation logic"
+
+    observable_result: "An interactive board updated through explicit collection transformations"
+
+    project_evolution:
+      artifact: "immutable-board-update"
+      contribution: >-
+        Establishes immutable board transitions needed for UiState and ViewModel.
+
+    common_misconceptions:
+      - "A lambda executes when it is declared"
+      - "map changes the original list"
+      - "filter removes elements from the source list"
+      - "Every loop should be replaced with a functional operation"
+
+    assessment:
+      evidence:
+        - "Reads and explains a simple lambda"
+        - "Selects a suitable collection operation"
+        - "Produces a changed board without mutating the source"
+        - "Explains the relationship between callback and lambda"
+
+    homework:
+      core: "Implement helper functions for empty cells and board fullness"
+      challenge: "Implement a board transformation using mapIndexed"
+
+  - id: "L09"
+    order: 9
+    slug: "game-rules-and-state-types"
+    title: "Game Rules with Enums, Sealed Types, and Extensions"
+    phase: "phase-3"
+    dominant_transition: "From loosely related flags to explicit domain states and rules"
+
+    essential_question: >-
+      How can Kotlin types make game states and transitions explicit,
+      exhaustive, and harder to misuse?
+
+    prerequisites:
+      concepts:
+        - "branching"
+        - "when-expression-intro"
+        - "enum-class"
+        - "data-class"
+        - "lambda-expression"
+        - "collection-transformations"
+        - "immutable-list-update"
+
+    outcomes:
+      - "Model game status as a finite set of alternatives"
+      - "Use a sealed type with data-carrying variants"
+      - "Use exhaustive when over a closed hierarchy"
+      - "Define a simple interface where appropriate"
+      - "Create and call an extension function"
+      - "Separate move validation from UI rendering"
+      - "Detect win, draw, or another terminal state"
+
+    new_concepts:
+      programming:
+        - "state-machine-intro"
+        - "state-transition"
+        - "invariant-intro"
+        - "rule-validation"
+        - "terminal-state"
+        - "separation-of-concerns-intro"
+      kotlin:
+        - "sealed-interface"
+        - "data-object"
+        - "data-carrying-state"
+        - "exhaustive-when"
+        - "interface-intro"
+        - "extension-function"
+      architecture:
+        - "game-engine-intro"
+        - "pure-rule-function"
+        - "ui-logic-separation"
+
+    reinforced_concepts:
+      - "enum-class"
+      - "when-expression-intro"
+      - "data-class"
+      - "function-declaration"
+      - "collection-transformations"
+
+    explicitly_deferred:
+      - "Class inheritance hierarchy"
+      - "Design patterns"
+      - "Operator overloading"
+      - "Dependency inversion"
+
+    sandbox:
+      title: "Represent and evaluate game status"
+      tasks:
+        - "Replace Boolean flags with a sealed status"
+        - "Render each status with exhaustive when"
+        - "Implement a pure move-validation function"
+        - "Implement terminal-state detection"
+        - "Create one domain-oriented extension function"
+
+    android_lab:
+      title: "Complete playable Tic-Tac-Toe rules"
+      required_features:
+        - "Reject illegal moves"
+        - "Switch players after a valid move"
+        - "Detect a win"
+        - "Detect a draw"
+        - "Display game status"
+        - "Allow restart"
+
+    observable_result: "A complete playable baseline game"
+
+    project_evolution:
+      artifact: "baseline-playable-game"
+      contribution: >-
+        Completes the first playable game and separates game rules from visual
+        cell components.
+
+    common_misconceptions:
+      - "A sealed type is an enum with different syntax"
+      - "Every game state should be represented by a Boolean"
+      - "Extension functions modify the extended class"
+      - "Rule validation belongs inside the clicked cell component"
+
+    assessment:
+      evidence:
+        - "Models playing, won, and draw states"
+        - "Handles all statuses with exhaustive when"
+        - "Implements and explains validation"
+        - "Keeps game rules outside GameCell"
+
+    homework:
+      core: "Add tests or manual test cases for win and draw scenarios"
+      challenge: "Generalize win detection beyond hardcoded board positions"
+
+  - id: "L10"
+    order: 10
+    slug: "state-hoisting-and-unidirectional-flow"
+    title: "State Hoisting and Unidirectional Data Flow"
+    phase: "phase-3"
+    dominant_transition: "From components that own behavior to components driven by state and events"
+
+    essential_question: >-
+      How can UI components remain reusable when state flows down and user
+      events flow up?
+
+    prerequisites:
+      concepts:
+        - "state-intro"
+        - "remember"
+        - "mutable-state-of"
+        - "callback-parameter-intro"
+        - "function-type"
+        - "immutable-component-input"
+        - "game-engine-intro"
+
+    outcomes:
+      - "Distinguish stateful and stateless composables"
+      - "Explain state hoisting"
+      - "Pass immutable values down the component tree"
+      - "Pass event callbacks upward"
+      - "Identify a source of truth"
+      - "Create a GameUiState data class"
+      - "Separate Screen, Board, Cell, and Status components"
+
+    new_concepts:
+      programming:
+        - "source-of-truth"
+        - "event"
+        - "data-flow"
+      compose:
+        - "state-hoisting"
+        - "stateful-composable"
+        - "stateless-composable"
+        - "state-down-events-up"
+        - "screen-level-state"
+        - "previewable-stateless-component"
+      architecture:
+        - "ui-state-model"
+        - "screen-component-boundary"
+        - "unidirectional-data-flow-intro"
+
+    reinforced_concepts:
+      - "data-class"
+      - "copy-intro"
+      - "callback-parameter-intro"
+      - "immutable-list-update"
+      - "ui-logic-separation"
+
+    explicitly_deferred:
+      - "ViewModel"
+      - "StateFlow"
+      - "SavedStateHandle"
+      - "Repository"
+
+    sandbox:
+      title: "Trace state and events"
+      tasks:
+        - "Identify duplicated sources of truth"
+        - "Rewrite a mutable component API as state plus callback"
+        - "Trace an event from cell click to state update"
+        - "Create GameUiState"
+
+    android_lab:
+      title: "Refactor the game into state-driven components"
+      required_features:
+        - "GameScreen owns screen-level state"
+        - "GameBoard receives state and callbacks"
+        - "GameCell receives display data and an event callback"
+        - "GameStatusPanel receives status"
+        - "Child components do not mutate the board directly"
+
+    observable_result: "A playable game using state-down/events-up component flow"
+
+    project_evolution:
+      artifact: "state-driven-game-screen"
+      contribution: >-
+        Establishes the component and data-flow architecture later moved into
+        a ViewModel.
+
+    common_misconceptions:
+      - "State hoisting means making every value global"
+      - "A stateless component cannot respond to clicks"
+      - "Callbacks contain UI state"
+      - "Every composable should own remember state"
+
+    assessment:
+      evidence:
+        - "Identifies the screen source of truth"
+        - "Draws or explains state-down/events-up flow"
+        - "Refactors a component to receive values and callbacks"
+        - "Explains why GameCell does not own board state"
+
+    homework:
+      core: "Create previews for at least two GameScreen states"
+      challenge: "Model all user actions as a small event type"
+
+  - id: "L11"
+    order: 11
+    slug: "viewmodel-and-screen-architecture"
+    title: "ViewModel and Screen Architecture"
+    phase: "phase-4"
+    dominant_transition: "From screen-local state to an explicit screen state holder"
+
+    essential_question: >-
+      Why should screen state and state-transition logic live outside the
+      composable that displays the screen?
+
+    prerequisites:
+      concepts:
+        - "ui-state-model"
+        - "screen-level-state"
+        - "state-down-events-up"
+        - "unidirectional-data-flow-intro"
+        - "game-engine-intro"
+        - "immutable-list-update"
+
+    outcomes:
+      - "Explain the responsibility of a ViewModel"
+      - "Move screen state out of GameScreen"
+      - "Expose read-only observable UI state"
+      - "Send user actions to the ViewModel"
+      - "Keep screen rendering separate from state transitions"
+      - "Identify model, logic, ViewModel, screen, and component responsibilities"
+      - "Explain the complete event-update-render loop"
+
+    new_concepts:
+      architecture:
+        - "viewmodel"
+        - "screen-state-holder"
+        - "private-mutable-public-readonly-state"
+        - "event-handler-method"
+        - "event-update-render-loop"
+        - "presentation-layer-intro"
+        - "package-by-feature-intro"
+      android:
+        - "viewmodel-lifecycle-intro"
+        - "viewmodel-acquisition"
+      compose:
+        - "collect-or-read-viewmodel-state"
+        - "route-vs-screen-intro"
+
+    reinforced_concepts:
+      - "ui-state-model"
+      - "source-of-truth"
+      - "state-down-events-up"
+      - "screen-component-boundary"
+      - "game-engine-intro"
+
+    explicitly_deferred:
+      - "Dependency injection"
+      - "Repository layer"
+      - "Use-case classes"
+      - "SavedStateHandle"
+      - "StateFlow unless selected by implementation baseline"
+      - "Process death restoration"
+
+    sandbox:
+      title: "Classify responsibilities"
+      tasks:
+        - "Assign code fragments to model, logic, ViewModel, screen, or component"
+        - "Trace a cell-click event"
+        - "Identify inappropriate UI dependencies in game logic"
+        - "Identify multiple mutable sources of truth"
+
+    android_lab:
+      title: "Move the game state into GameViewModel"
+      required_features:
+        - "GameViewModel owns GameUiState"
+        - "GameScreen observes state"
+        - "Cell clicks invoke ViewModel actions"
+        - "Restart invokes a ViewModel action"
+        - "Reusable components remain independent from ViewModel"
+
+    observable_result: "A playable game using ViewModel-based screen state"
+
+    project_evolution:
+      artifact: "viewmodel-based-game"
+      contribution: >-
+        Introduces the target architecture required for final projects.
+
+    common_misconceptions:
+      - "ViewModel is a visual component"
+      - "Every composable should receive the ViewModel"
+      - "ViewModel replaces the domain model"
+      - "Using ViewModel automatically creates good architecture"
+
+    assessment:
+      evidence:
+        - "Explains each architectural responsibility"
+        - "Traces a complete click-to-render cycle"
+        - "Moves state-transition logic out of GameScreen"
+        - "Keeps components parameter-driven"
+
+    homework:
+      core: "Document the architecture of the baseline game"
+      challenge: "Extract a standalone GameEngine and test it without Compose"
+
+  - id: "L12"
+    order: 12
+    slug: "material-and-screen-flow"
+    title: "Material Design and Screen Flow"
+    phase: "phase-4"
+    dominant_transition: "From a functional game screen to a coherent multi-state application"
+
+    essential_question: >-
+      How can Material components, themes, and screen states form a usable
+      application without obscuring the underlying architecture?
+
+    prerequisites:
+      concepts:
+        - "viewmodel"
+        - "ui-state-model"
+        - "screen-component-boundary"
+        - "material-component-intro"
+        - "conditional-composition"
+
+    outcomes:
+      - "Use Material 3 components consistently"
+      - "Use Scaffold and a top app bar"
+      - "Apply basic color and typography choices through a theme"
+      - "Represent setup, playing, handover, and result UI states"
+      - "Implement a simple screen flow"
+      - "Add a handover screen for same-device multiplayer where appropriate"
+      - "Preserve state ownership while changing visible screens"
+
+    new_concepts:
+      compose:
+        - "material-theme"
+        - "scaffold"
+        - "top-app-bar"
+        - "dialog-or-overlay"
+        - "screen-flow"
+        - "adaptive-layout-awareness"
+        - "accessibility-basics"
+      architecture:
+        - "application-ui-state"
+        - "screen-mode"
+        - "handover-state"
+        - "navigation-boundary-intro"
+
+    reinforced_concepts:
+      - "sealed-interface"
+      - "exhaustive-when"
+      - "viewmodel"
+      - "state-down-events-up"
+      - "reusable-component"
+
+    explicitly_deferred:
+      - "Complex Navigation Compose graphs"
+      - "Deep links"
+      - "Persistent settings"
+      - "Production UX research"
+      - "Advanced adaptive layouts"
+
+    sandbox:
+      title: "Model application screen modes"
+      tasks:
+        - "Define setup, playing, handover, and result states"
+        - "Handle all modes with exhaustive when"
+        - "Identify which data belongs to each mode"
+        - "Define events that move between modes"
+
+    android_lab:
+      title: "Turn the game into a complete Material app"
+      required_features:
+        - "App-level theme"
+        - "Scaffold or equivalent Material structure"
+        - "Setup or start state"
+        - "Playing state"
+        - "Result state"
+        - "Restart or new-game path"
+        - "Handover state for applicable two-player games"
+
+    observable_result: "A complete multi-state Material game application"
+
+    project_evolution:
+      artifact: "material-game-application"
+      contribution: >-
+        Provides the structural template used by individual final projects.
+
+    common_misconceptions:
+      - "Material Design is only a color palette"
+      - "Every UI state requires a separate Android Activity"
+      - "Screen changes require moving state into visual components"
+      - "A handover screen is equivalent to resetting the game"
+
+    assessment:
+      evidence:
+        - "Models the app's visible modes"
+        - "Uses Material structure consistently"
+        - "Maintains state through screen-mode changes"
+        - "Explains where screen-flow transitions are handled"
+
+    homework:
+      core: "Prepare a final project proposal using the provided project contract"
+      challenge: "Create a responsive board layout for two screen widths"
+
+  - id: "L13"
+    order: 13
+    slug: "final-project-implementation"
+    title: "Final Project Workshop"
+    phase: "phase-4"
+    dominant_transition: "From following a shared implementation to designing an individual game"
+
+    essential_question: >-
+      How can the shared architecture be adapted to the rules and state of a
+      different grid game?
+
+    prerequisites:
+      concepts:
+        - "domain-model"
+        - "board-as-data"
+        - "game-engine-intro"
+        - "ui-state-model"
+        - "viewmodel"
+        - "state-down-events-up"
+        - "material-theme"
+        - "screen-flow"
+
+    outcomes:
+      - "Define a minimal project scope"
+      - "Model the chosen board and game status"
+      - "Define legal state transitions"
+      - "Implement the main interaction loop"
+      - "Reuse the target architecture without unnecessary layers"
+      - "Debug implementation issues systematically"
+      - "Explain how the chosen game differs from the baseline game"
+
+    new_concepts:
+      programming:
+        - "requirements-to-model"
+        - "minimum-viable-scope"
+        - "edge-case-analysis"
+        - "manual-test-scenario"
+      tooling:
+        - "systematic-debugging"
+        - "git-checkpoint-workflow"
+
+    reinforced_concepts:
+      - "domain-model"
+      - "collection"
+      - "rule-validation"
+      - "state-transition"
+      - "viewmodel"
+      - "screen-component-boundary"
+      - "event-update-render-loop"
+
+    explicitly_deferred:
+      - "New major Kotlin language topics"
+      - "New architecture layers"
+      - "Online multiplayer"
+      - "Persistence unless explicitly approved"
+
+    sandbox:
+      title: "Project-specific rule experiments"
+      tasks:
+        - "Prototype one difficult rule in isolation"
+        - "Create representative board states"
+        - "Test valid and invalid moves"
+        - "Test a terminal condition"
+
+    android_lab:
+      title: "Implement the final project"
+      required_features:
+        - "Domain model"
+        - "Board representation"
+        - "Essential legal moves"
+        - "Turn or move progression"
+        - "Visible status"
+        - "At least one terminal state"
+        - "ViewModel-owned screen state"
+        - "Reusable board and cell components"
+
+    observable_result: "A functionally complete or near-complete individual game"
+
+    project_evolution:
+      artifact: "student-final-project-alpha"
+      contribution: >-
+        Produces the first complete implementation of the student's selected game.
+
+    common_misconceptions:
+      - "A more complex game is always a better final project"
+      - "Architecture must be redesigned from scratch"
+      - "All optional rules must be implemented before the main loop works"
+      - "Debugging means making random code changes"
+
+    assessment:
+      evidence:
+        - "Presents a coherent model"
+        - "Demonstrates the main game loop"
+        - "Explains at least one state transition"
+        - "Uses the required architectural responsibilities"
+
+    homework:
+      core: "Complete missing required features and prepare a demonstration"
+      challenge: "Add one approved advanced rule or UX improvement"
+
+  - id: "L14"
+    order: 14
+    slug: "refactor-explain-and-demonstrate"
+    title: "Refactor, Explain, and Demonstrate"
+    phase: "phase-4"
+    dominant_transition: "From code that works to code and architecture the learner can explain"
+
+    essential_question: >-
+      How can a developer make a working application clearer, safer, easier
+      to test, and easier to explain?
+
+    prerequisites:
+      concepts:
+        - "student-final-project-alpha"
+        - "event-update-render-loop"
+        - "separation-of-concerns-intro"
+        - "manual-test-scenario"
+
+    outcomes:
+      - "Refactor duplicated or unclear code"
+      - "Prefer val and immutable transitions where appropriate"
+      - "Use expressive Kotlin without obscuring beginner readability"
+      - "Verify required project scenarios"
+      - "Explain the architecture and event flow"
+      - "Demonstrate the final project"
+      - "Reflect on one bug and one design improvement"
+
+    new_concepts:
+      programming:
+        - "refactoring"
+        - "code-smell-intro"
+        - "regression-check"
+        - "technical-explanation"
+      kotlin:
+        - "idiomatic-kotlin-review"
+        - "scope-function-selected-use"
+      quality:
+        - "definition-of-done"
+        - "project-retrospective"
+
+    reinforced_concepts:
+      - "val"
+      - "copy-intro"
+      - "collection-transformations"
+      - "extension-function"
+      - "exhaustive-when"
+      - "viewmodel"
+      - "state-down-events-up"
+      - "event-update-render-loop"
+
+    explicitly_deferred:
+      - "Broad new language features"
+      - "Production deployment"
+      - "Premature performance optimization"
+      - "Architecture expansion"
+
+    sandbox:
+      title: "Refactor small representative fragments"
+      tasks:
+        - "Replace unclear mutation with an explicit transformation"
+        - "Simplify a condition"
+        - "Extract a meaningful function"
+        - "Compare an over-compressed and readable implementation"
+
+    android_lab:
+      title: "Finalize and demonstrate the project"
+      required_features:
+        - "All baseline requirements work"
+        - "Main scenarios have been checked"
+        - "Architecture can be explained"
+        - "UI communicates current state"
+        - "Restart or new-game flow works"
+
+    observable_result: "A demonstrated final game and an architecture explanation"
+
+    project_evolution:
+      artifact: "student-final-project-release"
+      contribution: >-
+        Produces the assessed final project and learner explanation.
+
+    common_misconceptions:
+      - "Idiomatic Kotlin always means shorter code"
+      - "Refactoring and adding features are the same activity"
+      - "A working demo proves every rule is correct"
+      - "Architecture explanation means listing file names"
+
+    assessment:
+      evidence:
+        - "Demonstrates required scenarios"
+        - "Explains model, logic, UiState, ViewModel, Screen, and Components"
+        - "Traces one user action through the architecture"
+        - "Describes one bug and its diagnosis"
+        - "Justifies one refactoring"
+
+    homework:
+      core: "None"
+      challenge: "Document possible next steps without implementing them"
+
+milestones:
+  - id: "M-A"
+    after_lesson: "L04"
+    title: "Interactive programming foundations"
+    required_evidence:
+      - "Uses values, conditions, repetition, and functions"
+      - "Builds a small interactive Compose app"
+      - "Extracts at least one reusable component"
+
+  - id: "M-B"
+    after_lesson: "L07"
+    title: "Interactive board model"
+    required_evidence:
+      - "Models cells and players"
+      - "Represents the board as a collection"
+      - "Renders the board from data"
+      - "Handles empty and occupied cells"
+      - "Updates local UI state"
+
+  - id: "M-C"
+    after_lesson: "L10"
+    title: "State-driven playable game"
+    required_evidence:
+      - "Implements legal moves"
+      - "Detects a terminal condition"
+      - "Uses immutable board updates"
+      - "Uses state-down/events-up"
+      - "Separates game rules from cell rendering"
+
+  - id: "M-D"
+    after_lesson: "L12"
+    title: "Target application architecture"
+    required_evidence:
+      - "Uses ViewModel-owned screen state"
+      - "Uses Screen and reusable Components"
+      - "Uses Material application structure"
+      - "Explains the event-update-render loop"
+      - "Supports setup, play, and result states"
+
+final_project:
+  introduced_in: "L06"
+  baseline_completed_in: "L09"
+  architecture_completed_in: "L12"
+  student_variant_implemented_in: ["L13", "L14"]
+
+  baseline_game: "Tic-Tac-Toe"
+
+  suggested_variants:
+    basic:
+      - "Tic-Tac-Toe"
+      - "Fifteen puzzle"
+      - "Memory matching game"
+    intermediate:
+      - "Connect Four"
+      - "Simplified Reversi"
+    advanced:
+      - "Reversi"
+      - "Simplified Checkers"
+      - "Battleship with a handover screen"
+
+  required_architecture_elements:
+    - "domain model"
+    - "game rules or game engine"
+    - "GameUiState"
+    - "GameViewModel"
+    - "GameScreen"
+    - "reusable board component"
+    - "reusable cell component"
+    - "Material theme"
+
+  prohibited_default_dependencies:
+    - "Hilt"
+    - "Room"
+    - "network libraries"
+    - "third-party state-management frameworks"
+
+generation_validation:
+  checks:
+    - id: "GV-01"
+      rule: "Every lesson lasts exactly 120 planned minutes"
+
+    - id: "GV-02"
+      rule: "Every lesson contains both Kotlin/programming and Android/Compose work"
+
+    - id: "GV-03"
+      rule: "Every new concept has an entry in 03-concept-dependency-map.yaml"
+
+    - id: "GV-04"
+      rule: "Every prerequisite concept is introduced in an earlier lesson"
+
+    - id: "GV-05"
+      rule: "Future concepts may appear only as explicitly identified scaffolding"
+
+    - id: "GV-06"
+      rule: "Every lesson produces an observable result"
+
+    - id: "GV-07"
+      rule: "Lessons L06-L14 contribute directly to the grid-game trajectory"
+
+    - id: "GV-08"
+      rule: "No infrastructure-heavy framework is introduced into the core path"
+
+    - id: "GV-09"
+      rule: "Optional depth is visibly separated from required material"
+
+    - id: "GV-10"
+      rule: "Final project content preserves state-down/events-up architecture"
